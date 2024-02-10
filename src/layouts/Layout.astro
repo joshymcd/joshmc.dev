@@ -31,6 +31,11 @@ const currentPath = Astro.url.pathname;
       <!-- <h1><a href="/" class={currentPath === "/" ? "underline" : ""}>Josh McDonald</a></h1> -->
       <menu class="flex flex-row gap-2">
         <li>
+          <a href="/" class={currentPath === "/" ? "underline" : ""}
+            >home</a
+          >
+        </li>
+        <li>
           <a href="/about" class={currentPath === "/about" ? "underline" : ""}
             >about</a
           >
