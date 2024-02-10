@@ -1,9 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		 contact form
-	</main>
+<Layout title="Contact">
+	<h1 slot="left">Contact</h1>
+	<main class="w-full h-full flex items-center" ><ContactForm></main> 
 </Layout>

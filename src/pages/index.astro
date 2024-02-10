@@ -1,10 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import ProfilePicture from "../components/ProfilePicture.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Josh McDonald">
   <main> 
-      index. short about social icons (social icons view transition to footer
-      left for other pages) 
-  </main>
+      <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Est modi beatae rerum amet harum, exercitationem laborum vel quos, vitae blanditiis incidunt quidem iusto nulla! Blanditiis aut repellendus quae itaque nemo.</p>
+  </main>  
+  <h1 slot="left" class="hidden lg:visible">Josh McDonald</h1>  
+  <ProfilePicture slot="left"  /> 
 </Layout>
