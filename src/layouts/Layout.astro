@@ -1,4 +1,8 @@
 ---
+import { Image } from 'astro:assets';
+import GithubIcon from "../icons/github-64.png"
+import LinkedInIcon from "../icons/linkedin-64.png"
+import TwitterIcon from "../icons/twitter-64.png"
 interface Props {
   title: string;
 }
@@ -22,9 +26,9 @@ const currentPath = Astro.url.pathname;
   </head>
   <body class="min-h-dvh w-dvw flex flex-col lg:py-8 xl:py-4 p-0">
     <header
-      class="w-full bg-slate-500/75 lg:container mx-auto p-4 flex flex-col sm:flex-row gap-2  justify-between lg:rounded-t-md"
+      class="w-full bg-slate-500/75 lg:container mx-auto p-4 flex flex-col sm:flex-row gap-2  justify-end lg:rounded-t-md"
     >
-      <h1><a href="/" class={currentPath === "/" ? "underline" : ""}>Josh McDonald</a></h1>
+      <!-- <h1><a href="/" class={currentPath === "/" ? "underline" : ""}>Josh McDonald</a></h1> -->
       <menu class="flex flex-row gap-2">
         <li>
           <a href="/about" class={currentPath === "/about" ? "underline" : ""}
@@ -76,13 +80,17 @@ const currentPath = Astro.url.pathname;
     <footer
       class="w-full bg-slate-500/75 lg:container mx-auto p-4 flex flex-row justify-between lg:rounded-b-md"
     >
-      <menu>socials go here</menu>
-      <div class="bg-green-500">base</div>
+      <menu class="flex flex-row gap-2 ">
+        <li><Image height={36} width={36} src={GithubIcon} alt="Github Icon"/></li>
+        <li><Image height={36} width={36} src={TwitterIcon} alt="Twitter Icon"/></li> 
+        <li><Image height={36} width={36} src={LinkedInIcon} alt="LinkedIn Icon"/></li>
+      </menu>
+      <!-- <div class="bg-green-500">base</div>
       <div class="sm:bg-green-500">sm</div>
       <div class="md:bg-green-500">md</div>
       <div class="lg:bg-green-500">lg</div>
       <div class="xl:bg-green-500">xl</div>
-      <div class="2xl:bg-green-500">2xl</div>
+      <div class="2xl:bg-green-500">2xl</div> -->
     </footer>
   </body>
 </html>
