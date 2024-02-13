@@ -3,7 +3,7 @@ import { Image } from "astro:assets";
 import GithubIcon from "../icons/github-64.png";
 import LinkedInIcon from "../icons/linkedin-64.png";
 import TwitterIcon from "../icons/twitter-64.png";
-import bg from '../images/michael-daniels-ylUGx4g6eHk-unsplash-original.jpg'
+import bg from '../images/michael-daniels-ylUGx4g6eHk-unsplash-large.jpg'
 interface Props {
   title: string;
 }
@@ -15,7 +15,7 @@ const currentPath = Astro.url.pathname;
 <!doctype html>
 <html
   lang="en"
-  class="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-gray-800 via-zinc-500 to-emerald-600"
+  class="bg-[conic-gradient(at_bottom_left,_var(--tw-gradient-stops))] from-gray-800 via-zinc-500 to-emerald-600 "
 >
   <head>
     <meta charset="UTF-8" />
@@ -25,7 +25,7 @@ const currentPath = Astro.url.pathname;
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body class="min-h-dvh w-dvw flex flex-col lg:py-8 xl:py-4 p-0 bg-cover bg-center" style={`background-image: url(${bg.src});`}>
+  <body class="h-full w-full flex flex-col lg:py-8 xl:py-4 p-0 bg-cover bg-center" style={`background-image: url(${bg.src});`}>
     <header
       class="w-full bg-slate-500/75 backdrop-blur-sm lg:container mx-auto p-4 flex flex-col sm:flex-row gap-2 justify-end lg:rounded-t-md"
     >
@@ -101,12 +101,12 @@ const currentPath = Astro.url.pathname;
           />
         </li>
       </menu>
-      <!-- <div class="bg-green-500">base</div>
+      <div class="bg-green-500">base</div>
       <div class="sm:bg-green-500">sm</div>
       <div class="md:bg-green-500">md</div>
       <div class="lg:bg-green-500">lg</div>
       <div class="xl:bg-green-500">xl</div>
-      <div class="2xl:bg-green-500">2xl</div> -->
+      <div class="2xl:bg-green-500">2xl</div>
     </footer>
   </body>
 </html>
