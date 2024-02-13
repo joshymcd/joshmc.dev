@@ -51,7 +51,7 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
         <li>/</li>
         <li>
           <a href="/resume" class={currentPath === "/resume" ? "underline" : ""}
-            >resume</a
+            >résumé</a
           >
         </li>
         <li>/</li>
@@ -68,8 +68,8 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
     >
       <div
         class="p-4 h-full w-full justify-between lg:justify-center items-center flex lg:aspect-square"
-      >
-        <slot name="left" />
+      > 
+        <h1>{ title }</h1>
       </div>
       <div
         class="p-4 h-full w-full justify-center items-center flex lg:aspect-square"
@@ -82,6 +82,7 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
         <div class="border h-full w-full" >right</div>
       </div> -->
       <!-- <slot /> -->
+
     </main>
     <footer
       class="w-full bg-slate-500/75 backdrop-blur-sm lg:container mx-auto p-4 flex flex-row justify-between lg:rounded-b-md"
