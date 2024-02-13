@@ -4,6 +4,7 @@ import GithubIcon from "../icons/github-64.png";
 import LinkedInIcon from "../icons/linkedin-64.png";
 import TwitterIcon from "../icons/twitter-64.png";
 import bg from "../images/michael-daniels-ylUGx4g6eHk-unsplash-large.jpg";
+import MenuItem from "../components/MenuItem.astro";
 interface Props {
   title: string;
 }
@@ -43,57 +44,33 @@ const currentPath = Astro.url.pathname;
             <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a>
           </li>
           <li>/</li>
-          <li>
-            <a
-              href="/about"
-              class={currentPath.startsWith("/about") ? "underline" : ""}
-              >about</a
-            >
-          </li>
+          <MenuItem url="/about" title="about" />
           <li>/</li>
-          <li>
-            <a
-              href="/projects"
-              class={currentPath.startsWith("/projects") ? "underline" : ""}
-              >projects</a
-            >
-          </li>
+          <MenuItem url="/projects" title="projects" />
           <li>/</li>
-          <li>
-            <a
-              href="/resume"
-              class={currentPath.startsWith("/resume") ? "underline" : ""}
-              >résumé</a
-            >
-          </li>
+          <MenuItem url="/resume" title="résumé" />
           <li>/</li>
-          <li>
-            <a
-              href="/contact"
-              class={currentPath.startsWith("/contact") ? "underline" : ""}
-              >contact</a
-            >
-          </li>
+          <MenuItem url="/contact" title="contact" />
         </menu>
       </header>
 
       <main
-        class="flex flex-1 flex-col divide-x-0 divide-y divide-slate-700 bg-white/40 p-4 backdrop-blur-sm lg:flex-row lg:divide-x lg:divide-y-0 overflow-y-hidden"
+        class="flex flex-1 flex-col gap-2 divide-x-0 divide-y divide-slate-700 overflow-y-hidden bg-white/40 p-4 backdrop-blur-sm lg:flex-row lg:divide-x lg:divide-y-0"
       >
         <section
-          class="flex flex-col justify-center p-2 lg:w-1/3 lg:items-center overflow-y-auto"
+          class="flex flex-col justify-center overflow-y-auto p-2 lg:w-1/3 lg:items-center"
         >
-          <h1>{title}</h1>
+          <h1 class="text-xl font-medium">{title}</h1>
         </section>
         <section
-          class="flex flex-1 flex-col p-2 lg:w-2/3 lg:items-center lg:justify-center overflow-y-auto"
+          class="flex flex-1 flex-col overflow-y-auto p-2 lg:w-2/3 lg:items-center lg:justify-center"
         >
           <slot />
         </section>
       </main>
 
       <footer class="flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md">
-        <menu class="flex w-full flex-row justify-evenly gap-2 sm:w-max">
+        <menu class="flex w-full flex-row justify-evenly gap-4 sm:w-max">
           <li>
             <a href="https://github.com/joshymcd"
               ><Image
