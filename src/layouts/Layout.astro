@@ -37,7 +37,7 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
         </li>
         <li>/</li>
         <li>
-          <a href="/about" class={currentPath === "/about" ? "underline" : ""}
+          <a href="/about" class={currentPath.startsWith("/about")  ? "underline" : ""}
             >about</a
           >
         </li>
@@ -45,12 +45,12 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
         <li>
           <a
             href="/projects"
-            class={currentPath === "/projects" ? "underline" : ""}>projects</a
+            class={currentPath.startsWith("/projects") ? "underline" : ""}>projects</a
           >
         </li>
         <li>/</li>
         <li>
-          <a href="/resume" class={currentPath === "/resume" ? "underline" : ""}
+          <a href="/resume" class={currentPath.startsWith("/resume") ? "underline" : ""}
             >résumé</a
           >
         </li>
@@ -58,7 +58,7 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
         <li>
           <a
             href="/contact"
-            class={currentPath === "/contact" ? "underline" : ""}>contact</a
+            class={currentPath.startsWith("/contact") ? "underline" : ""}>contact</a
           >
         </li>
       </menu>
