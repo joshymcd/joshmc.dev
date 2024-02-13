@@ -13,102 +13,125 @@ const currentPath = Astro.url.pathname;
 ---
 
 <!doctype html>
-<html lang="en" 
-style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B5904B, #191805, black)`}>
+<html
+  lang="en"
+  style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B5904B, #191805, black)`}
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
   <body
-    class="h-screen w-screen flex flex-col lg:py-8 xl:py-4 p-0 bg-cover bg-center"
+    class="flex h-full flex-col items-center justify-center bg-cover bg-center lg:px-4"
     style={`height: 100dvh; width: 100dvw; background-image: url(${bg.src}); `}
   >
-    <header
-      class="w-full bg-slate-500/75 backdrop-blur-sm lg:container mx-auto p-4 flex flex-col sm:flex-row gap-2 justify-end lg:rounded-t-md"
+    <div
+      class="flex h-full w-full flex-col backdrop-blur-sm lg:container lg:mx-auto lg:my-4"
     >
-      <!-- <h1><a href="/" class={currentPath === "/" ? "underline" : ""}>Josh McDonald</a></h1> -->
-      <menu class="flex flex-row gap-2">
-        <li>
-          <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a>
-        </li>
-        <li>/</li>
-        <li>
-          <a href="/about" class={currentPath.startsWith("/about")  ? "underline" : ""}
-            >about</a
-          >
-        </li>
-        <li>/</li>
-        <li>
-          <a
-            href="/projects"
-            class={currentPath.startsWith("/projects") ? "underline" : ""}>projects</a
-          >
-        </li>
-        <li>/</li>
-        <li>
-          <a href="/resume" class={currentPath.startsWith("/resume") ? "underline" : ""}
-            >résumé</a
-          >
-        </li>
-        <li>/</li>
-        <li>
-          <a
-            href="/contact"
-            class={currentPath.startsWith("/contact") ? "underline" : ""}>contact</a
-          >
-        </li>
-      </menu>
-    </header>
-    <main
-      class="flex-1 flex flex-col lg:flex-row backdrop-blur-md lg:justify-evenly bg-white/40 items-center w-full lg:container mx-auto p-4 gap-2 divide-y divide-x-0 lg:divide-y-0 lg:divide-x divide-slate-700"
-    >
-      <div
-        class="p-2 lg:h-full w-full justify-between lg:justify-center items-center flex lg:aspect-square h-fit"
-      > 
-        <h1>{ title }</h1>
-      </div>
-      <div
-        class="p-2 h-full w-full justify-center items-center flex lg:aspect-square flex-1 lg:flex-auto"
+      <header
+        class="flex flex-row justify-end gap-2 bg-slate-500/75 p-4 lg:rounded-t-md"
       >
-        <slot />
-      </div>
+        <menu class="flex flex-row gap-2">
+          <li>
+            <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a>
+          </li>
+          <li>/</li>
+          <li>
+            <a
+              href="/about"
+              class={currentPath.startsWith("/about") ? "underline" : ""}
+              >about</a
+            >
+          </li>
+          <li>/</li>
+          <li>
+            <a
+              href="/projects"
+              class={currentPath.startsWith("/projects") ? "underline" : ""}
+              >projects</a
+            >
+          </li>
+          <li>/</li>
+          <li>
+            <a
+              href="/resume"
+              class={currentPath.startsWith("/resume") ? "underline" : ""}
+              >résumé</a
+            >
+          </li>
+          <li>/</li>
+          <li>
+            <a
+              href="/contact"
+              class={currentPath.startsWith("/contact") ? "underline" : ""}
+              >contact</a
+            >
+          </li>
+        </menu>
+      </header>
 
-      <!-- <div class="  flex flex-row justify-evenly items-center h-1/3 bg-red-500">
-        <div class="border h-full w-full">left</div>
-        <div class="border h-full w-full" >right</div>
-      </div> -->
-      <!-- <slot /> -->
+      <main
+        class="flex flex-1 flex-col divide-x-0 divide-y divide-slate-700 bg-white/40 p-4 backdrop-blur-sm lg:flex-row lg:divide-x lg:divide-y-0 overflow-y-hidden"
+      >
+        <section
+          class="flex flex-col justify-center p-2 lg:w-1/3 lg:items-center overflow-y-auto"
+        >
+          <h1>{title}</h1>
+        </section>
+        <section
+          class="flex flex-1 flex-col p-2 lg:w-2/3 lg:items-center lg:justify-center overflow-y-auto"
+        >
+          <slot />
+        </section>
+      </main>
 
-    </main>
-    <footer
-      class="w-full bg-slate-500/75 backdrop-blur-sm lg:container mx-auto p-4 flex flex-row justify-between lg:rounded-b-md"
-    >
-      <menu class="flex flex-row gap-2">
-        <li>
-          <Image height={36} width={36} src={GithubIcon} alt="Github Icon" />
-        </li>
-        <li>
-          <Image height={36} width={36} src={TwitterIcon} alt="Twitter Icon" />
-        </li>
-        <li>
-          <Image
-            height={36}
-            width={36}
-            src={LinkedInIcon}
-            alt="LinkedIn Icon"
-          />
-        </li>
-      </menu>
-      <div class="bg-green-500">base</div>
-      <div class="sm:bg-green-500">sm</div>
-      <div class="md:bg-green-500">md</div>
-      <div class="lg:bg-green-500">lg</div>
-      <div class="xl:bg-green-500">xl</div>
-      <div class="2xl:bg-green-500">2xl</div>
-    </footer>
+      <footer class="flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md">
+        <menu class="flex w-full flex-row justify-evenly gap-2 sm:w-max">
+          <li>
+            <a href="https://github.com/joshymcd"
+              ><Image
+                height={36}
+                width={36}
+                src={GithubIcon}
+                alt="Github Icon"
+              /></a
+            >
+          </li>
+          <li>
+            <a href="https://twitter.com/joshymcd92"
+              ><Image
+                height={36}
+                width={36}
+                src={TwitterIcon}
+                alt="Twitter Icon"
+              /></a
+            >
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/joshmcdonald92/"
+              ><Image
+                height={36}
+                width={36}
+                src={LinkedInIcon}
+                alt="LinkedIn Icon"
+              /></a
+            >
+          </li>
+        </menu>
+        <!-- <div class="bg-green-500">base</div>
+        <div class="sm:bg-green-500">sm</div>
+        <div class="md:bg-green-500">md</div>
+        <div class="lg:bg-green-500">lg</div>
+        <div class="xl:bg-green-500">xl</div>
+        <div class="2xl:bg-green-500">2xl</div> -->
+      </footer>
+    </div>
   </body>
 </html>
