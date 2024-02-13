@@ -64,15 +64,15 @@ style={`background: linear-gradient(-10deg, black, #191805, #B5904B, #B1B3A8, #B
       </menu>
     </header>
     <main
-      class="flex-1 flex flex-col lg:flex-row backdrop-blur-md bg-white/40 items-center w-full lg:container mx-auto p-4 gap-2 divide-y divide-x-0 lg:divide-y-0 lg:divide-x divide-slate-700"
+      class="flex-1 flex flex-col lg:flex-row backdrop-blur-md lg:justify-evenly bg-white/40 items-center w-full lg:container mx-auto p-4 gap-2 divide-y divide-x-0 lg:divide-y-0 lg:divide-x divide-slate-700"
     >
       <div
-        class="p-4 h-full w-full justify-between lg:justify-center items-center flex lg:aspect-square"
+        class="p-2 lg:h-full w-full justify-between lg:justify-center items-center flex lg:aspect-square h-fit"
       > 
         <h1>{ title }</h1>
       </div>
       <div
-        class="p-4 h-full w-full justify-center items-center flex lg:aspect-square"
+        class="p-2 h-full w-full justify-center items-center flex lg:aspect-square flex-1 lg:flex-auto"
       >
         <slot />
       </div>
