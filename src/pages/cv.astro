@@ -4,6 +4,13 @@ import TimeLine from '../components/TimeLine.astro'
 ---
 
 <Layout title="CV">
-	<h2>Experience</h2>
-	<TimeLine />
+	<main class="lg:m-4 flex flex-col h-full justify-evenly">
+		<section class="p-4">
+			<h2>Work History</h2>
+			<h3>Download my full CV <a href="https://drive.google.com/file/d/1Qfp3tZtL7LxjkCUIuP1fhQSZ3JjxKF_g/view?usp=sharing" class="text-blue-500">here</a>.</h3>
+		</section>
+		<section>
+			<TimeLine />
+		</section>
+	</main> 
 </Layout>

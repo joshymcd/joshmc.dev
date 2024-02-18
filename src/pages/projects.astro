@@ -1,9 +1,105 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Projects"> 
-	<main>
-		 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Soluta labore suscipit maiores corporis deserunt laboriosam iusto earum ipsum alias? Dolorum, aut nemo ad consectetur cupiditate rem. Culpa vel in at!
-	</main>
+<Layout title="Projects / Tools">
+  <main class="lg:m-4 flex flex-col h-full justify-evenly">
+	<section class="p-4">
+		<h3>Personal Projects</h3>
+	</section>
+    <ul class="flex flex-col gap-2">
+      
+		<li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+        <div class="px-4 py-5 sm:px-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium leading-6 text-black">
+        	<a href="https://joshmc.dev">JoshMc.Dev</a>
+            </h3>
+            <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
+              This website<br /> Built with Astro, React, TailwindCSS and Hosted
+              on Vercel
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <p class="text-sm font-medium text-gray-500">
+              Status: <span class="text-green-600">Active</span>
+            </p>
+            <a
+              href="https://github.com/joshymcd/joshmc.dev"
+              class="font-medium text-indigo-600 hover:text-indigo-500"
+              >Github</a
+            >
+          </div>
+        </div>
+      </li>
+
+      <li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+        <div class="px-4 py-5 sm:px-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium leading-6 text-black">
+              <a href="https://work.joshmc.dev">work.joshmc.dev</a> 
+            </h3>
+            <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus architecto, rerum nulla, dolores possimus sapiente quasi earum alias dicta deserunt laborum rem nemo suscipit facere animi sunt cum fugit?
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <p class="text-sm font-medium text-gray-500">
+              Status: <span class="text-green-600">Active</span>
+            </p>
+            <a
+              href="https://github.com/joshymcd/joshmc.dev"
+              class="font-medium text-indigo-600 hover:text-indigo-500"
+              >Github</a
+            >
+          </div>
+        </div>
+      </li>
+
+	  <li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+        <div class="px-4 py-5 sm:px-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium leading-6 text-black">
+              <a href="#">Asmari</a> 
+            </h3>
+            <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus architecto, rerum nulla, dolores possimus sapiente quasi earum alias dicta deserunt laborum rem nemo suscipit facere animi sunt cum fugit?
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <p class="text-sm font-medium text-gray-500">
+              Status: <span class="text-green-600">Active</span>
+            </p>
+            <a
+              href="https://github.com/joshymcd/joshmc.dev"
+              class="font-medium text-indigo-600 hover:text-indigo-500"
+              >Website</a
+            >
+          </div>
+        </div>
+      </li> 
+	  <li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+        <div class="px-4 py-5 sm:px-6">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-medium leading-6 text-black">
+              <a href="https://work.joshmc.dev">trip.joshmc.dev</a> 
+            </h3>
+            <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus architecto, rerum nulla, dolores possimus sapiente quasi earum alias dicta deserunt laborum rem nemo suscipit facere animi sunt cum fugit?
+            </p>
+          </div>
+          <div class="mt-4 flex items-center justify-between">
+            <p class="text-sm font-medium text-gray-500">
+              Status: <span class="text-green-600">Active</span>
+            </p>
+            <a
+              href="https://github.com/joshymcd/joshmc.dev"
+              class="font-medium text-indigo-600 hover:text-indigo-500"
+              >Github</a
+            >
+          </div>
+        </div>
+      </li>
+    </ul>
+  </main>
 </Layout>
