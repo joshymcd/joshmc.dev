@@ -3,21 +3,19 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Projects / Tools">
-  <main class="lg:m-4 flex flex-col h-full justify-evenly">
-	<section class="p-4">
-		<h3>Personal Projects</h3>
-	</section>
-    <ul class="flex flex-col gap-2">
-      
-		<li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+  <main class="flex h-full flex-col justify-evenly lg:m-4 gap-4 ">
+    <section class="p-4">
+      <h2 class="text-lg font-semibold">Personal Projects</h2>
+    </section>
+    <ul class="flex flex-col gap-2 flex-1">
+      <li class="bg-white/60 shadow hover:bg-white/90 lg:rounded-md">
         <div class="px-4 py-5 sm:px-6">
-          <div class="flex items-center justify-between">
+          <div class="flex flex-col lg:flex-row items-center justify-between">
             <h3 class="text-lg font-medium leading-6 text-black">
-        	<a href="https://joshmc.dev">JoshMc.Dev</a>
+              <a href="https://joshmc.dev" class="font-semibold">This Site</a>
             </h3>
-            <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
-              This website<br /> Built with Astro, React, TailwindCSS and Hosted
-              on Vercel
+            <p class="mt-1 max-w-2xl text-center lg:text-right text-sm text-gray-900">
+              JoshMc.dev<br /> Built with Astro & TailwindCSS. Hosted on Vercel
             </p>
           </div>
           <div class="mt-4 flex items-center justify-between">
@@ -33,14 +31,17 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </li>
 
-      <li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+      <!-- <li class="bg-white/60 shadow hover:bg-white/90 lg:rounded-md">
         <div class="px-4 py-5 sm:px-6">
           <div class="flex items-center justify-between">
             <h3 class="text-lg font-medium leading-6 text-black">
-              <a href="https://work.joshmc.dev">work.joshmc.dev</a> 
+              <a href="https://work.joshmc.dev">work.joshmc.dev</a>
             </h3>
             <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus architecto, rerum nulla, dolores possimus sapiente quasi earum alias dicta deserunt laborum rem nemo suscipit facere animi sunt cum fugit?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              minus architecto, rerum nulla, dolores possimus sapiente quasi
+              earum alias dicta deserunt laborum rem nemo suscipit facere animi
+              sunt cum fugit?
             </p>
           </div>
           <div class="mt-4 flex items-center justify-between">
@@ -56,14 +57,17 @@ import Layout from "../layouts/Layout.astro";
         </div>
       </li>
 
-	  <li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+      <li class="bg-white/60 shadow hover:bg-white/90 lg:rounded-md">
         <div class="px-4 py-5 sm:px-6">
           <div class="flex items-center justify-between">
             <h3 class="text-lg font-medium leading-6 text-black">
-              <a href="#">Asmari</a> 
+              <a href="#">Asmari</a>
             </h3>
             <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus architecto, rerum nulla, dolores possimus sapiente quasi earum alias dicta deserunt laborum rem nemo suscipit facere animi sunt cum fugit?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              minus architecto, rerum nulla, dolores possimus sapiente quasi
+              earum alias dicta deserunt laborum rem nemo suscipit facere animi
+              sunt cum fugit?
             </p>
           </div>
           <div class="mt-4 flex items-center justify-between">
@@ -77,15 +81,18 @@ import Layout from "../layouts/Layout.astro";
             >
           </div>
         </div>
-      </li> 
-	  <li class="bg-white/60 hover:bg-white/90 shadow lg:rounded-md">
+      </li>
+      <li class="bg-white/60 shadow hover:bg-white/90 lg:rounded-md">
         <div class="px-4 py-5 sm:px-6">
           <div class="flex items-center justify-between">
             <h3 class="text-lg font-medium leading-6 text-black">
-              <a href="https://work.joshmc.dev">trip.joshmc.dev</a> 
+              <a href="https://work.joshmc.dev">trip.joshmc.dev</a>
             </h3>
             <p class="mt-1 max-w-2xl text-right text-sm text-gray-900">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur minus architecto, rerum nulla, dolores possimus sapiente quasi earum alias dicta deserunt laborum rem nemo suscipit facere animi sunt cum fugit?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur
+              minus architecto, rerum nulla, dolores possimus sapiente quasi
+              earum alias dicta deserunt laborum rem nemo suscipit facere animi
+              sunt cum fugit?
             </p>
           </div>
           <div class="mt-4 flex items-center justify-between">
@@ -99,7 +106,7 @@ import Layout from "../layouts/Layout.astro";
             >
           </div>
         </div>
-      </li>
+      </li> -->
     </ul>
   </main>
 </Layout>

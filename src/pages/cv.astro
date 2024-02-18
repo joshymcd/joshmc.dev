@@ -1,16 +1,21 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import TimeLine from '../components/TimeLine.astro'
+import Layout from "../layouts/Layout.astro";
+import TimeLine from "../components/TimeLine.astro";
 ---
 
 <Layout title="CV">
-	<main class="lg:m-4 flex flex-col h-full justify-evenly">
-		<section class="p-4">
-			<h2>Work History</h2>
-			<h3>Download my full CV <a href="https://drive.google.com/file/d/1Qfp3tZtL7LxjkCUIuP1fhQSZ3JjxKF_g/view?usp=sharing" class="text-blue-500">here</a>.</h3>
-		</section>
-		<section>
-			<TimeLine />
-		</section>
-	</main> 
+  <main class="flex h-full flex-col justify-evenly lg:m-4 gap-4">
+    <section class="p-4">
+      <h2 class="font-semibold text-lg">Work History</h2>
+      <h3>
+        Download my full CV <a
+          href="https://drive.google.com/file/d/17WPLPMiEajOsMe3lBD0z9x5i3-pheM3j/view?usp=drive_link"
+          class="text-blue-900 font-semibold">here</a
+        >.
+      </h3>
+    </section>
+    <section class="flex-1">
+      <TimeLine />
+    </section>
+  </main>
 </Layout>

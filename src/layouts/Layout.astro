@@ -38,7 +38,7 @@ const optimizedBackground = await getImage({
     <title>{title}</title>
   </head>
   <body
-    class="flex h-full flex-col items-center justify-center bg-cover bg-center lg:px-4"
+    class="flex h-full flex-col items-center justify-center bg-cover bg-center lg:px-4 antialiased"
     style={`height: 100dvh; width: 100dvw; background-image: url(${optimizedBackground.src}); `}
   >
     <div
@@ -55,8 +55,8 @@ const optimizedBackground = await getImage({
           <MenuItem url="/projects" title="projects" />
           <li>/</li>
           <MenuItem url="/cv" title="CV" />
-          <li>/</li>
-          <MenuItem url="/contact" title="contact" />
+          <!-- <li>/</li>
+          <MenuItem url="/contact" title="contact" /> -->
         </menu>
       </header>
 
