@@ -1,42 +1,49 @@
 ---
-import TimeLineItem from '../components/TimeLineItem.astro'
+import TimeLineItem from "../components/TimeLineItem.astro";
 interface LineItem {
-    title: string;
-    time: string;
-    description: string;
+  title: string;
+  time: string;
+  description: string;
 }
 
-const lineItems : LineItem[] = [
+import Card from "../components/Card.astro";
+
+const lineItems: LineItem[] = [
   {
     title: "Solutions Architect",
-    description : "",
-    time: "July 2022"
+    description: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Tenetur maxime cupiditate dicta quas aliquid pariatur deleniti omnis, quia aspernatur enim beatae sequi, placeat ipsam qui maiores expedita totam ut labore!",
+    time: "July 2022 - Present",
   },
   {
     title: "Senior Developer",
-    description : "",
-    time: "April 2018"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nec nunc a tortor imperdiet mollis ut vitae arcu. Duis justo leo, luctus eu fringilla mattis, porttitor in nisl. Maecenas elementum egestas enim eget interdum. Nullam varius libero sed lorem tincidunt porttitor sed aliquam purus. Fusce efficitur purus non porttitor dapibus.",
+    time: "April 2018 - June 2022",
   },
   {
     title: "Developer",
-    description : "",
-    time: "Sept 2016"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum hendrerit mattis risus eget fringilla. Praesent eget lobortis mauris. Curabitur fringilla mauris in tristique cursus. Suspendisse venenatis, mauris a tincidunt varius, ante quam vulputate leo, et iaculis turpis sapien id nulla.",
+    time: "Sept 2016 - March 2018",
   },
   {
     title: "Technical Consultant",
-    description : "",
-    time: "Dec 2010"
+    description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras tristique placerat placerat. Morbi ex nulla, imperdiet id orci sit amet, venenatis varius justo. Maecenas ac arcu vel dui tincidunt bibendum. Phasellus ac consectetur nibh. Donec elementum aliquet ligula, et mattis.",
+    time: "Dec 2010 - Aug 2016",
+  },
+];
+---
+
+<div class="flex flex-col gap-2">
+  {
+    lineItems.map((v, i, a) => (
+      <Card title={v.title}>
+        <p class="font-light text-sm italic text-gray-600">{v.time}</p>
+        <p
+          slot="bottomLeft"
+          class="mt-1 max-w-2xl text-center text-sm text-gray-900 lg:text-left"
+        >
+          {v.description}
+        </p>
+      </Card>
+    ))
   }
-]
-
-
----   
-			<div class="relative col-span-12 px-4 space-y-6 sm:col-span-9">
-				<div class="col-span-12 space-y-12 relative px-4 sm:col-span-8 sm:space-y-8 sm:before:absolute sm:before:top-2 sm:before:bottom-0 sm:before:w-0.5 sm:before:-left-3 before:dark:bg-gray-700">
-					{
-            lineItems.map((v, i, a) =>(
-              <TimeLineItem {...v} />
-            ))
-          }
-				</div>
-			</div> 
+</div>

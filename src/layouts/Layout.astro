@@ -38,7 +38,7 @@ const optimizedBackground = await getImage({
     <title>{title}</title>
   </head>
   <body
-    class="flex h-full flex-col items-center justify-center bg-cover bg-center lg:px-4 antialiased"
+    class="flex h-full flex-col items-center justify-center bg-cover bg-center antialiased lg:px-4"
     style={`height: 100dvh; width: 100dvw; background-image: url(${optimizedBackground.src}); `}
   >
     <div
@@ -48,18 +48,16 @@ const optimizedBackground = await getImage({
         class="flex flex-row justify-end gap-2 bg-slate-500/75 p-4 lg:rounded-t-md"
       >
         <nav class="flex flex-row gap-2">
-          <ul>
-          <li>
-            <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a>
-          </li>
-          <li>/</li>
-          <MenuItem url="/projects" title="projects" />
-          <li>/</li>
-          <MenuItem url="/cv" title="CV" />
-          <!-- <li>/</li>
-          <MenuItem url="/contact" title="contact" /> -->
-        
-        </ul></nav>
+      
+              <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a
+              > 
+            <span>/</span>
+            <MenuItem url="/projects" title="projects" />
+            <span>/</span>
+            <MenuItem url="/cv" title="CV" />
+            <!-- <li>/</li>
+          <MenuItem url="/contact" title="contact" /> --> 
+        </nav>
       </header>
 
       <main

@@ -8,11 +8,9 @@ export interface Props {
 
 const { url, title } = Astro.props; 
 const currentPath = Astro.url.pathname;
----
-<li>
+--- 
     <a
       href={url}
       class={currentPath.startsWith(url) ? "underline" : ""}
       >{title}</a
-    >
-  </li>
+    > 

@@ -1,0 +1,20 @@
+---
+
+export interface Props {
+    title: string; 
+}
+
+const { title,  } = Astro.props;  
+---   
+<div class="bg-white/60 px-4 py-5 shadow hover:bg-white/90 sm:px-6 lg:rounded-md">
+    <div class="flex flex-col lg:flex-row items-center justify-between">
+      <h3 class="text-lg font-medium leading-6 text-black">
+        <a href="https://joshmc.dev" class="font-semibold">{title}</a>
+      </h3>
+      <slot />
+    </div>
+    <div class="mt-4 flex items-center justify-between">
+      <slot name="bottomLeft" />
+      <slot name="bottomRight" /> 
+    </div>
+  </div>
