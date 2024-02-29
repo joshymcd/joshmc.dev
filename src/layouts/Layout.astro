@@ -38,11 +38,11 @@ const optimizedBackground = await getImage({
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body
+  <body 
     class="flex h-full flex-col items-center justify-center bg-cover bg-center antialiased lg:px-4"
     style={`height: 100dvh; width: 100dvw; background-image: url(${optimizedBackground.src}); `}
   >
-    <div
+    <div 
       class="flex h-full w-full flex-col backdrop-blur-sm lg:container lg:mx-auto lg:my-4"
     >
       <header
@@ -70,13 +70,13 @@ const optimizedBackground = await getImage({
           <h1 class="text-2xl font-semibold">{title}</h1>
         </aside>
         <section
-          class="flex flex-1 flex-col p-2 lg:w-2/3 lg:justify-center lg:overflow-y-auto"
+          class="flex flex-1 flex-col lg:w-2/3 lg:justify-center lg:overflow-y-auto"
         >
           <slot />
         </section>
       </main>
 
-      <footer class="flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md">
+      <footer  class="z-30 flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md">
         <menu class="flex w-full flex-row justify-evenly gap-4 sm:w-max">
           <li>
             <a href="https://github.com/joshymcd"
