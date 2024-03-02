@@ -1,34 +1,35 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
 ---
 
-<Layout title="Projects / Tools">
-  <main class="flex h-full flex-col justify-evenly lg:m-4 gap-4 ">
-    <section class="p-4">
-      <h2 class="text-lg font-semibold">Personal Projects</h2>
+<Layout title="Personal Projects">
+  <main class="flex h-full flex-col justify-evenly gap-4 lg:m-4">
+    <section class="">
+      <h2 class="text-lg font-semibold"></h2>
     </section>
-    <ul class="flex flex-col gap-2 flex-1">
-      <li class="bg-white/60 shadow hover:bg-white/90 lg:rounded-md">
-        <div class="px-4 py-5 sm:px-6">
-          <div class="flex flex-col lg:flex-row items-center justify-between">
-            <h3 class="text-lg font-medium leading-6 text-black">
-              <a href="https://joshmc.dev" class="font-semibold">This Site</a>
-            </h3>
-            <p class="mt-1 max-w-2xl text-center lg:text-right text-sm text-gray-900">
-              JoshMc.dev<br /> Built with Astro & TailwindCSS. Hosted on Vercel
-            </p>
-          </div>
-          <div class="mt-4 flex items-center justify-between">
-            <p class="text-sm font-medium text-gray-500">
-              Status: <span class="text-green-600">Active</span>
-            </p>
-            <a
-              href="https://github.com/joshymcd/joshmc.dev"
-              class="font-medium text-indigo-600 hover:text-indigo-500"
-              >Github</a
-            >
-          </div>
-        </div>
+    <ul class="flex flex-1 flex-col gap-2">
+      
+      <li>
+        <Card index={0} title="This Site"  >
+          <p
+            class="mt-1 max-w-2xl text-center text-sm text-gray-900 lg:text-right"
+          >
+            JoshMc.dev<br /> Built with <a href="#">Astro</a> & <a href="#"
+              >TailwindCSS</a
+            >. Hosted on <a href="#">Vercel</a>.
+          </p>
+
+          <p slot="bottomLeft" class="text-sm font-medium text-gray-500">
+            Status: <span class="text-green-600">Active</span>
+          </p>
+          <a
+          slot="bottomRight"
+        href="https://github.com/joshymcd/joshmc.dev"
+        class="font-medium text-indigo-600 hover:text-indigo-500"
+        >Github</a
+      >
+        </Card>
       </li>
 
       <!-- <li class="bg-white/60 shadow hover:bg-white/90 lg:rounded-md">
