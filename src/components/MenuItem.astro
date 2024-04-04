@@ -2,15 +2,12 @@
 import type { HTMLAttributes } from "astro/types";
 
 export interface Props {
-    url: string;
-    title: string
+  url: string;
+  title: string;
 }
 
-const { url, title } = Astro.props; 
+const { url, title } = Astro.props;
 const currentPath = Astro.url.pathname;
---- 
-    <a
-      href={url}
-      class={currentPath.startsWith(url) ? "underline" : ""}
-      >{title}</a
-    > 
+---
+
+<a href={url} class={currentPath.startsWith(url) ? "underline" : ""}>{title}</a>

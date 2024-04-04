@@ -1,19 +1,26 @@
 ---
-import Layout from '../layouts/Layout.astro'; 
+import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="About"> 
-	<main>
-		 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repudiandae corporis eveniet rem possimus hic ducimus ipsam totam voluptatibus aperiam enim, numquam, natus porro, minima saepe in. Temporibus, cupiditate laboriosam.
-		 <h1>The current URL is: {Astro.url}</h1>
-<h1>The current URL pathname is: {Astro.url.pathname}</h1>
-<h1>The current URL origin is: {Astro.url.origin}</h1>
+<Layout title="About">
+  <main>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum repudiandae
+    corporis eveniet rem possimus hic ducimus ipsam totam voluptatibus aperiam
+    enim, numquam, natus porro, minima saepe in. Temporibus, cupiditate
+    laboriosam.
+    <h1>The current URL is: {Astro.url}</h1>
+    <h1>The current URL pathname is: {Astro.url.pathname}</h1>
+    <h1>The current URL origin is: {Astro.url.origin}</h1>
 
+    <div class="h-2.5 w-full rounded-full bg-gray-200 dark:bg-gray-700">
+      <div class="h-2.5 w-[45%] rounded-full bg-blue-600"></div>
+    </div>
 
-<div class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700">
-	<div class="bg-blue-600 h-2.5 rounded-full w-[45%]"></div>
-  </div>
-  
-  
-	</main>
+    <div class="bg-green-500">base</div>
+    <div class="sm:bg-green-500">sm</div>
+    <div class="md:bg-green-500">md</div>
+    <div class="lg:bg-green-500">lg</div>
+    <div class="xl:bg-green-500">xl</div>
+    <div class="2xl:bg-green-500">2xl</div>
+  </main>
 </Layout>

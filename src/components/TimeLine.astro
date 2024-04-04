@@ -11,7 +11,8 @@ import Card from "../components/Card.astro";
 const lineItems: LineItem[] = [
   {
     title: "Solutions Architect",
-    description: "Solution Design & Technical Lead on custom software development projects.",
+    description:
+      "Solution Design & Technical Lead on custom software development projects.",
     time: "July 2022 - Present",
   },
   {
@@ -21,7 +22,8 @@ const lineItems: LineItem[] = [
   },
   {
     title: "Developer",
-    description: "Software development and maintenance based around ERP systems.",
+    description:
+      "Software development and maintenance based around ERP systems.",
     time: "Sept 2016 - March 2018",
   },
   {
@@ -36,7 +38,7 @@ const lineItems: LineItem[] = [
   {
     lineItems.map((v, i, a) => (
       <Card index={i} title={v.title}>
-        <p class="font-light text-sm italic text-gray-600">{v.time}</p>
+        <p class="text-sm font-light italic text-gray-600">{v.time}</p>
         <p
           slot="bottomLeft"
           class="mt-1 max-w-2xl text-center text-sm text-gray-900 lg:text-left"

@@ -6,7 +6,7 @@ import LinkedInIcon from "../icons/linkedin-64.png";
 import TwitterIcon from "../icons/twitter-64.png";
 import myBackground from "../images/michael-daniels-ylUGx4g6eHk-unsplash-large.jpg";
 import MenuItem from "../components/MenuItem.astro";
-import { ViewTransitions } from 'astro:transitions';
+import { ViewTransitions } from "astro:transitions";
 import "@fontsource/montserrat";
 
 interface Props {
@@ -38,26 +38,24 @@ const optimizedBackground = await getImage({
     <title>{title}</title>
     <ViewTransitions />
   </head>
-  <body 
+  <body
     class="flex h-full flex-col items-center justify-center bg-cover bg-center antialiased lg:px-4"
     style={`height: 100dvh; width: 100dvw; background-image: url(${optimizedBackground.src}); `}
   >
-    <div 
+    <div
       class="flex h-full w-full flex-col backdrop-blur-sm lg:container lg:mx-auto lg:my-4"
     >
       <header
         class="flex flex-row justify-end gap-2 bg-slate-500/75 p-4 lg:rounded-t-md"
       >
         <nav class="flex flex-row gap-2">
-      
-              <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a
-              > 
-            <span>/</span>
-            <MenuItem url="/projects" title="projects" />
-            <span>/</span>
-            <MenuItem url="/cv" title="CV" />
-            <!-- <li>/</li>
-          <MenuItem url="/contact" title="contact" /> --> 
+          <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a>
+          <span>/</span>
+          <MenuItem url="/projects" title="projects" />
+          <span>/</span>
+          <MenuItem url="/work" title="work" />
+          <!-- <li>/</li>
+          <MenuItem url="/contact" title="contact" /> -->
         </nav>
       </header>
 
@@ -76,7 +74,9 @@ const optimizedBackground = await getImage({
         </section>
       </main>
 
-      <footer  class="z-30 flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md">
+      <footer
+        class="z-30 flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md"
+      >
         <menu class="flex w-full flex-row justify-evenly gap-4 sm:w-max">
           <li>
             <a href="https://github.com/joshymcd"
@@ -109,12 +109,6 @@ const optimizedBackground = await getImage({
             >
           </li>
         </menu>
-        <!-- <div class="bg-green-500">base</div>
-        <div class="sm:bg-green-500">sm</div>
-        <div class="md:bg-green-500">md</div>
-        <div class="lg:bg-green-500">lg</div>
-        <div class="xl:bg-green-500">xl</div>
-        <div class="2xl:bg-green-500">2xl</div> -->
       </footer>
     </div>
   </body>
