@@ -2,9 +2,10 @@
 export interface Props {
   title: string;
   index: number;
+  url: string;
 }
 
-const { title, index } = Astro.props;
+const { title, index, url } = Astro.props;
 ---
 
 <div
@@ -13,7 +14,7 @@ const { title, index } = Astro.props;
 >
   <div class="flex flex-col items-center justify-between lg:flex-row">
     <h3 class="text-lg font-medium leading-6 text-black">
-      <a href="https://joshmc.dev" class="font-semibold">{title}</a>
+      <a href="{url}" class="font-semibold">{title}</a>
     </h3>
     <slot />
   </div>
