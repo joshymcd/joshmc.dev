@@ -2,9 +2,7 @@
 import type { HTMLAttributes } from "astro/types";
 
 export interface Props extends HTMLAttributes<"a"> {}
-
-const { ...attrs } = Astro.props;
-const currentPath = Astro.url.pathname;
+  
 ---
 
 <form class="w-full" action="https://formbold.com/s/FORM_ID" method="POST">

@@ -1,13 +1,12 @@
 ---
-import { getImage } from "astro:assets";
-import { Image } from "astro:assets";
-import GithubIcon from "../icons/github-64.png";
-import LinkedInIcon from "../icons/linkedin-64.png";
-import TwitterIcon from "../icons/twitter-64.png";
+import { getImage } from "astro:assets"; 
 import myBackground from "../images/michael-daniels-ylUGx4g6eHk-unsplash-large.jpg";
 import MenuItem from "../components/MenuItem.astro";
 import { ViewTransitions } from "astro:transitions";
 import "@fontsource/montserrat";
+import Linkedin from "../icons/linkedin.svg.astro";
+import Twitter from "../icons/square-twitter.svg.astro";
+import Github from "../icons/square-github.svg.astro";
 
 interface Props {
   title: string;
@@ -46,7 +45,7 @@ const optimizedBackground = await getImage({
       class="flex h-full w-full flex-col backdrop-blur-sm lg:container lg:mx-auto lg:my-4"
     >
       <header
-        class="flex flex-row justify-end gap-2 bg-slate-500/75 p-4 lg:rounded-t-md"
+        class="flex flex-row justify-end gap-2 h-14 bg-slate-500/75 p-4 lg:rounded-t-md"
       >
         <nav class="flex flex-row gap-2">
           <a href="/" class={currentPath === "/" ? "underline" : ""}>home</a>
@@ -75,40 +74,31 @@ const optimizedBackground = await getImage({
       </main>
 
       <footer
-        class="z-30 flex flex-row gap-2 bg-slate-500/75 p-4 lg:rounded-b-md"
+        class="z-30 flex h-14 w-full flex-row items-center gap-2 bg-slate-500/75 p-4 align-middle lg:rounded-b-md"
       >
-        <menu class="flex w-full flex-row justify-evenly gap-4 sm:w-max">
-          <li>
-            <a href="https://github.com/joshymcd"
-              ><Image
-                height={36}
-                width={36}
-                src={GithubIcon}
-                alt="Github Icon"
-              /></a
-            >
-          </li>
-          <li>
-            <a href="https://twitter.com/joshymcd92"
-              ><Image
-                height={36}
-                width={36}
-                src={TwitterIcon}
-                alt="Twitter Icon"
-              /></a
-            >
-          </li>
-          <li>
-            <a href="https://www.linkedin.com/in/joshmcdonald92/"
-              ><Image
-                height={36}
-                width={36}
-                src={LinkedInIcon}
-                alt="LinkedIn Icon"
-              /></a
-            >
-          </li>
-        </menu>
+        <a
+          href="https://github.com/joshymcd"
+          class="flex items-center gap-2 align-baseline"
+        >
+          <Github />
+          <span class="hidden md:block">Github</span>
+        </a>
+
+        <a
+          href="https://twitter.com/joshymcd92"
+           class="flex items-center gap-2 align-baseline"
+        >
+          <Twitter />
+          <span class="hidden md:block">Twitter</span>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/joshmcdonald92/"
+           class="flex items-center gap-2 align-baseline"
+        >
+          <Linkedin />
+          <span class="hidden md:block">LinkedIn</span>
+        </a>
       </footer>
     </div>
   </body>

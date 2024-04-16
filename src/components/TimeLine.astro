@@ -1,5 +1,4 @@
 ---
-import TimeLineItem from "../components/TimeLineItem.astro";
 interface LineItem {
   title: string;
   time: string;
@@ -36,7 +35,7 @@ const lineItems: LineItem[] = [
 
 <div class="flex flex-col gap-2">
   {
-    lineItems.map((v, i, a) => (
+    lineItems.map((v, i) => (
       <Card index={i} title={v.title}>
         <p class="text-sm font-light italic text-gray-600">{v.time}</p>
         <p
