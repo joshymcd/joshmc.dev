@@ -18,10 +18,12 @@ import "../styles/global.css";
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body
-    class="flex flex-col min-h-full text-text-base bg-gradient-to-b from-bg-base from-60% to-bg-gradient-end"
+    class="flex flex-col h-screen text-text-base bg-gradient-to-b from-bg-base from-60% to-bg-gradient-end"
   >
     <Header />
-    <main class="container mx-auto p-6 flex-grow flex flex-col justify-center">
+    <main
+      class="container mx-auto p-6 flex-1 overflow-y-auto flex flex-col justify-center"
+    >
       <slot />
     </main>
     <Footer />
