@@ -1,8 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ContactForm from "../components/ContactForm.astro";
+import Mail from "@lucide/astro/icons/mail";
 ---
 
-<Layout title="Contact">
-  <main class="flex h-full w-full items-center"><ContactForm /></main>
+<Layout>
+  <h1
+    class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2"
+  >
+    <Mail size={30} transition:name="page-icon" />
+    <span transition:name="page-title">Contact Me</span>
+  </h1>
+  <p>[Contact form or details will go here]</p>
 </Layout>

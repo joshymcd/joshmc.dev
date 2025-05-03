@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-text-base: theme(colors.gray.900);
+  --color-bg-base: theme(colors.stone.200);
+  --color-bg-gradient-end: theme(colors.stone.400);
+  --color-link-active: theme(colors.blue.700);
+  --color-link-hover: theme(colors.blue.800);
+  --color-border-subtle: theme(colors.stone.400);
+}
+
+@layer base {
+  @variant dark {
+    --color-text-base: theme(colors.gray.100);
+    --color-bg-base: theme(colors.slate.950);
+    --color-bg-gradient-end: theme(colors.slate.800);
+    --color-link-active: theme(colors.blue.400);
+    --color-link-hover: theme(colors.blue.300);
+    --color-border-subtle: theme(colors.slate.600);
+  }
+}
