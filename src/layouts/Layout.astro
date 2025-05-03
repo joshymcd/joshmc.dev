@@ -12,8 +12,10 @@ import "../styles/global.css";
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro Basics</title>
+    <title>joshmcdev</title>
     <ViewTransitions />
+    {/* Google reCAPTCHA v3 Script (for auto-binding) */}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   </head>
   <body
     class="flex flex-col min-h-full text-text-base bg-gradient-to-b from-bg-base from-60% to-bg-gradient-end"
@@ -75,4 +77,9 @@ import "../styles/global.css";
     animation-timing-function: ease-in-out;
   }
   */
+
+  /* --- Hide reCAPTCHA v3 Badge --- */
+  .grecaptcha-badge {
+    visibility: hidden;
+  }
 </style>

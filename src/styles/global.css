@@ -4,6 +4,7 @@
 
 @theme {
   --color-text-base: theme(colors.gray.900);
+  --color-text-subtle: theme(colors.stone.500);
   --color-bg-base: theme(colors.stone.200);
   --color-bg-gradient-end: theme(colors.stone.400);
   --color-link-active: theme(colors.blue.700);
@@ -14,6 +15,7 @@
 @layer base {
   @variant dark {
     --color-text-base: theme(colors.gray.100);
+    --color-text-subtle: theme(colors.slate.500);
     --color-bg-base: theme(colors.slate.950);
     --color-bg-gradient-end: theme(colors.slate.800);
     --color-link-active: theme(colors.blue.400);
