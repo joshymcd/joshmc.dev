@@ -4,20 +4,24 @@ import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import LaptopMinimal from "@lucide/astro/icons/laptop-minimal";
 import HardHat from "@lucide/astro/icons/hard-hat";
+import PageTitle from "../components/PageTitle.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-  <h1
-    class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2"
-  >
-    <LaptopMinimal size={30} transition:name="page-icon" />
-    <span transition:name="page-title">Josh McDonald</span>
-  </h1>
-  <div class="flex flex-col items-center justify-center text-text-muted mt-16">
-    <HardHat size={48} class="mb-4" />
-    <p class="text-xl">Under Construction</p>
+  <div class="flex flex-col flex-1 items-center gap-y-8">
+    <PageTitle
+      title="Josh McDonald"
+      icon={LaptopMinimal}
+      subtitle="Software Engineer || Solutions Architect"
+    />
+    <div
+      class="flex-1 flex flex-col items-center justify-center text-text-muted w-full"
+    >
+      <HardHat size={48} class="mb-4" />
+      <p class="text-xl">Under Construction</p>
+    </div>
   </div>
 </Layout>

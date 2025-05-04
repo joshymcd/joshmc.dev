@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import TimelineItem from "../components/TimelineItem.astro";
 import Briefcase from "@lucide/astro/icons/briefcase";
+import PageTitle from "../components/PageTitle.astro";
 
 // Define the work history data
 interface LineItem {
@@ -42,23 +43,20 @@ const lineItems: LineItem[] = [
 ---
 
 <Layout>
-  <h1
-    class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2"
-  >
-    <Briefcase size={30} transition:name="page-icon" />
-    <span transition:name="page-title">Work History</span>
-  </h1>
-  <ol
-    class="relative border-s border-gray-300 dark:border-gray-700 max-w-3xl mx-auto"
-  >
-    {
-      lineItems.map((item) => (
-        <TimelineItem
-          title={item.title}
-          time={item.time}
-          description={item.description}
-        />
-      ))
-    }
-  </ol>
+  <div class="flex flex-col flex-1 gap-y-8">
+    <PageTitle title="Work History" icon={Briefcase} />
+    <ol
+      class="flex-1 relative border-s border-gray-300 dark:border-gray-700 max-w-3xl mx-auto w-full"
+    >
+      {
+        lineItems.map((item) => (
+          <TimelineItem
+            title={item.title}
+            time={item.time}
+            description={item.description}
+          />
+        ))
+      }
+    </ol>
+  </div>
 </Layout>

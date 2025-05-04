@@ -1,87 +1,86 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Mail from "@lucide/astro/icons/mail";
+import PageTitle from "../components/PageTitle.astro";
 ---
 
 <Layout>
-  <h1
-    class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2"
-  >
-    <Mail size={30} transition:name="page-icon" />
-    <span transition:name="page-title">Contact Me</span>
-  </h1>
+  <div class="flex flex-col flex-1 gap-y-8">
+    <PageTitle title="Contact Me" icon={Mail} />
 
-  {
-    /* IMPORTANT: Replace # in action attribute below with your form handling endpoint/service URL */
-  }
-  <form
-    id="contact-form"
-    method="POST"
-    action="#"
-    class="max-w-3xl mx-auto p-8 bg-bg-alt rounded-lg"
-  >
-    <div class="mb-6">
-      <label for="name" class="block mb-2 text-sm font-medium text-text-base"
-        >Your Name</label
-      >
-      <input
-        type="text"
-        id="name"
-        name="name"
-        required
-        class="w-full px-3 py-2 bg-bg-base border border-border-subtle rounded-md focus:outline-none focus:ring-2 focus:ring-accent-base focus:border-transparent text-text-base"
-      />
-    </div>
-    <div class="mb-6">
-      <label for="email" class="block mb-2 text-sm font-medium text-text-base"
-        >Your Email</label
-      >
-      <input
-        type="email"
-        id="email"
-        name="email"
-        required
-        class="w-full px-3 py-2 bg-bg-base border border-border-subtle rounded-md focus:outline-none focus:ring-2 focus:ring-accent-base focus:border-transparent text-text-base"
-      />
-    </div>
-    <div class="mb-6">
-      <label for="message" class="block mb-2 text-sm font-medium text-text-base"
-        >Message</label
-      >
-      <textarea
-        id="message"
-        name="message"
-        rows="4"
-        required
-        class="w-full px-3 py-2 bg-bg-base border border-border-subtle rounded-md focus:outline-none focus:ring-2 focus:ring-accent-base focus:border-transparent text-text-base"
-      ></textarea>
-    </div>
-
-    <button
-      type="submit"
-      class="g-recaptcha w-full px-4 py-2 text-text-inverted bg-accent-base rounded-md hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent-base focus:ring-opacity-50 transition-colors"
-      data-sitekey="6LeVRy0rAAAAAOwJGshD-Y50TD3a6W8GaeWOK7yv"
-      data-callback="onSubmit"
-      data-action="submit"
+    {
+      /* IMPORTANT: Replace # in action attribute below with your form handling endpoint/service URL */
+    }
+    <form
+      id="contact-form"
+      method="POST"
+      action="#"
+      class="flex-1 max-w-3xl mx-auto p-8 bg-bg-alt rounded-lg w-full"
     >
-      Send Message
-    </button>
+      <div class="mb-6">
+        <label for="name" class="block mb-2 text-sm font-medium text-text-base"
+          >Your Name</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-3 py-2 bg-bg-base border border-border-subtle rounded-md focus:outline-none focus:ring-2 focus:ring-accent-base focus:border-transparent text-text-base"
+        />
+      </div>
+      <div class="mb-6">
+        <label for="email" class="block mb-2 text-sm font-medium text-text-base"
+          >Your Email</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-3 py-2 bg-bg-base border border-border-subtle rounded-md focus:outline-none focus:ring-2 focus:ring-accent-base focus:border-transparent text-text-base"
+        />
+      </div>
+      <div class="mb-6">
+        <label
+          for="message"
+          class="block mb-2 text-sm font-medium text-text-base">Message</label
+        >
+        <textarea
+          id="message"
+          name="message"
+          rows="4"
+          required
+          class="w-full px-3 py-2 bg-bg-base border border-border-subtle rounded-md focus:outline-none focus:ring-2 focus:ring-accent-base focus:border-transparent text-text-base"
+        ></textarea>
+      </div>
 
-    {/* reCAPTCHA Disclaimer */}
-    <p class="text-xs text-text-subtle mt-4 text-center">
-      This site is protected by reCAPTCHA and the Google
-      <a
-        href="https://policies.google.com/privacy"
-        class="underline hover:text-accent-hover transition-colors"
-        >Privacy Policy</a
-      > and
-      <a
-        href="https://policies.google.com/terms"
-        class="underline hover:text-accent-hover transition-colors"
-        >Terms of Service</a
-      > apply.
-    </p>
-  </form>
+      <button
+        type="submit"
+        class="g-recaptcha w-full px-4 py-2 text-text-inverted bg-accent-base rounded-md hover:bg-accent-hover focus:outline-none focus:ring-2 focus:ring-accent-base focus:ring-opacity-50 transition-colors"
+        data-sitekey="6LeVRy0rAAAAAOwJGshD-Y50TD3a6W8GaeWOK7yv"
+        data-callback="onSubmit"
+        data-action="submit"
+      >
+        Send Message
+      </button>
+
+      {/* reCAPTCHA Disclaimer */}
+      <p class="text-xs text-text-subtle mt-4 text-center">
+        This site is protected by reCAPTCHA and the Google
+        <a
+          href="https://policies.google.com/privacy"
+          class="underline hover:text-accent-hover transition-colors"
+          >Privacy Policy</a
+        > and
+        <a
+          href="https://policies.google.com/terms"
+          class="underline hover:text-accent-hover transition-colors"
+          >Terms of Service</a
+        > apply.
+      </p>
+    </form>
+  </div>
 </Layout>
 
 <script is:inline>

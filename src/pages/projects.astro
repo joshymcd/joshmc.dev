@@ -2,17 +2,17 @@
 import Layout from "../layouts/Layout.astro";
 import FolderKanban from "@lucide/astro/icons/folder-kanban";
 import HardHat from "@lucide/astro/icons/hard-hat";
+import PageTitle from "../components/PageTitle.astro";
 ---
 
 <Layout>
-  <h1
-    class="text-3xl font-bold mb-8 text-center flex items-center justify-center gap-2"
-  >
-    <FolderKanban size={30} transition:name="page-icon" />
-    <span transition:name="page-title">Projects</span>
-  </h1>
-  <div class="flex flex-col items-center justify-center text-text-muted mt-16">
-    <HardHat size={48} class="mb-4" />
-    <p class="text-xl">Under Construction</p>
+  <div class="flex flex-col flex-1 items-center gap-y-8">
+    <PageTitle title="Projects" icon={FolderKanban} />
+    <div
+      class="flex-1 flex flex-col items-center justify-center text-text-muted w-full"
+    >
+      <HardHat size={48} class="mb-4" />
+      <p class="text-xl">Under Construction</p>
+    </div>
   </div>
 </Layout>

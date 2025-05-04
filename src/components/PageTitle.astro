@@ -1,0 +1,33 @@
+---
+// Using a more generic type for the icon component prop
+
+interface Props {
+  title: string;
+  icon: any; // Changed type to any for simplicity
+  subtitle?: string; // Added optional subtitle prop
+}
+
+const { title, icon: IconComponent, subtitle } = Astro.props;
+---
+
+<div class="flex flex-col items-center gap-y-2 py-6">
+  {/* Added gap-y-2 and py-6 */}
+  <h1
+    class="text-3xl font-bold text-center flex items-center justify-center gap-2"
+  >
+    {/* Removed py-6, it will be handled by parent gap */}
+    <IconComponent size={30} transition:name="page-icon" />
+    <span transition:name="page-title">{title}</span>
+  </h1>
+  {
+    subtitle && (
+      <p
+        class="text-xl text-text-subtle text-center"
+        transition:name="page-subtitle"
+      >
+        {subtitle}
+      </p>
+      // Removed mt-2, spacing handled by parent gap
+    )
+  }
+</div>
