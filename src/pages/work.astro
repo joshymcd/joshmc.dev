@@ -1,12 +1,62 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import TimeLine from "../components/TimeLine.astro"; 
+import TimelineItem from "../components/TimelineItem.astro";
+import Briefcase from "@lucide/astro/icons/briefcase";
+import PageTitle from "../components/PageTitle.astro";
+
+// Define the work history data
+interface LineItem {
+  title: string;
+  time: string;
+  description: string;
+}
+
+const lineItems: LineItem[] = [
+  {
+    title: "Senior Software Engineer",
+    description: "Technical Lead & Software Engineer",
+    time: "May 2024 - Present",
+  },
+  {
+    title: "Solutions Architect",
+    description:
+      "Solution Design & Technical Lead on custom software development projects.",
+    time: "July 2022 - April 2024",
+  },
+  {
+    title: "Senior Developer",
+    description: "Technical Lead for custom software development projects.",
+    time: "April 2018 - June 2022",
+  },
+  {
+    title: "Developer",
+    description:
+      "Software development and maintenance based around ERP systems.",
+    time: "Sept 2016 - March 2018",
+  },
+  {
+    title: "Technical Consultant",
+    description: "Technical Consultancy and support for ERP systems.",
+    time: "Dec 2010 - Aug 2016",
+  },
+];
 ---
 
-<Layout title="Work History">
-  <main class="flex h-full flex-col justify-evenly gap-4 lg:m-4">
-    <section class="flex-1">
-      <TimeLine />
-    </section>
-  </main>
+<Layout>
+  <div class="flex flex-col flex-1 gap-y-8">
+    <PageTitle title="Work History" icon={Briefcase} />
+    <ol
+      class="flex-1 relative border-s border-gray-300 dark:border-gray-700 max-w-3xl mx-auto w-full"
+    >
+      {
+        lineItems.map((item) => (
+          <TimelineItem
+            title={item.title}
+            time={item.time}
+            description={item.description}
+          />
+        ))
+      }
+    </ol>
+  </div>
 </Layout>

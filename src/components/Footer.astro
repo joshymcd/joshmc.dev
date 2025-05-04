@@ -1,0 +1,50 @@
+---
+import { Github, Linkedin, Twitter } from "@lucide/astro/icons"; // Changed X to Twitter
+
+const socialLinks = [
+  {
+    href: "https://github.com/joshymcd", // Replace with your GitHub URL
+    label: "GitHub",
+    icon: Github,
+  },
+  {
+    href: "https://linkedin.com/in/joshmcdonald92", // Replace with your LinkedIn URL
+    label: "LinkedIn",
+    icon: Linkedin,
+  },
+  {
+    href: "https://x.com/joshymcd92", // Replace with your X/Twitter URL
+    label: "Twitter", // Changed label
+    icon: Twitter, // Changed icon from X to Twitter
+  },
+];
+
+const pathname = Astro.url.pathname;
+---
+
+<footer class="h-28 w-full p-4 mt-auto text-text-base">
+  <div class="container mx-auto flex justify-end items-end h-full">
+    {
+      pathname !== "/find-me" && (
+        <ul class="flex space-x-4">
+          {socialLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={link.label}
+                class="transition-colors hover:text-link-hover"
+              >
+                <link.icon
+                  size={24}
+                  transition:name={`social-${link.label.toLowerCase()}`}
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</footer>

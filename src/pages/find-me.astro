@@ -1,0 +1,64 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Github from "@lucide/astro/icons/github";
+import Linkedin from "@lucide/astro/icons/linkedin";
+import Twitter from "@lucide/astro/icons/twitter"; // Or use 'X' if available and preferred
+import Contact from "@lucide/astro/icons/contact"; // Icon for the page title
+import PageTitle from "../components/PageTitle.astro"; // Import the new component
+
+// TODO: Replace placeholder URLs with your actual social media profile links
+const socialLinks = [
+  {
+    href: "https://github.com/joshymcd",
+    icon: Github,
+    label: "GitHub",
+    badgeText: "code",
+  },
+  {
+    href: "https://linkedin.com/in/joshmcdonald92",
+    icon: Linkedin,
+    label: "LinkedIn",
+    badgeText: "work",
+  },
+  {
+    href: "https://x.com/joshymcd92",
+    icon: Twitter, // Or potentially an 'X' icon if Lucide adds one
+    label: "Twitter",
+    badgeText: "memes",
+  },
+];
+---
+
+<Layout>
+  <div class="flex flex-col flex-1 items-center gap-y-8">
+    <PageTitle title="Find Me" icon={Contact} />
+    {/* Use the component */}
+
+    <div
+      class="flex-1 flex flex-wrap justify-center items-center gap-8 w-full p-4"
+    >
+      {
+        socialLinks.map((link) => (
+          <a
+            href={link.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Find me on ${link.label}`}
+            class="block rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all duration-200 hover:scale-105"
+          >
+            <div class="flex flex-col items-center p-6 w-32 h-40 border border-border bg-bg-muted rounded-md text-text-base hover:border-primary hover:bg-bg-gradient-end">
+              <link.icon
+                size={48}
+                transition:name={`social-${link.label.toLowerCase()}`}
+                class="mb-2"
+              />
+              <p class="text-base text-center text-text-muted mt-auto">
+                {link.badgeText}
+              </p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</Layout>

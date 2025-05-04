@@ -1,0 +1,94 @@
+---
+import ThemeToggle from "./ThemeToggle.astro";
+// Import Lucide icons directly
+import House from "@lucide/astro/icons/house";
+import Briefcase from "@lucide/astro/icons/briefcase";
+import FolderKanban from "@lucide/astro/icons/folder-kanban";
+import Mail from "@lucide/astro/icons/mail";
+import Contact from "@lucide/astro/icons/contact";
+
+const pathname = Astro.url.pathname;
+// Remove color variables for now
+// const activeClass = "text-[var(--color-link-active)]";
+// const inactiveClass = "hover:text-[var(--color-link-hover)]";
+---
+
+<header class="flex h-28 p-4 text-text-base justify-start">
+  <div class="container mx-auto flex flex-col justify-start items-center">
+    <nav class="grid grid-cols-3 items-center w-full h-full">
+      <div class="flex items-center space-x-3 justify-self-start">
+        <img
+          src="https://github.com/joshymcd.png"
+          alt="User Avatar"
+          class="h-10 w-10 rounded-full object-cover"
+        />
+        {
+          pathname !== "/" && (
+            <a
+              href="/"
+              class="text-xl font-semibold transition-colors hover:text-link-hover hidden sm:inline"
+              transition:name="header-user-name"
+            >
+              Josh McDonald
+            </a>
+          )
+        }
+      </div>
+      <ul
+        class="flex space-x-6 border border-border-subtle rounded-full px-8 justify-self-center"
+      >
+        <li>
+          <a
+            href="/"
+            class={`${pathname === "/" ? "text-link-active font-bold" : "hover:text-link-hover"} transition-colors p-2`}
+            aria-label="Home"
+          >
+            <House size={24} />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/work"
+            class={`${pathname === "/work" ? "text-link-active font-bold" : "hover:text-link-hover"} transition-colors p-2`}
+            aria-label="Work"
+          >
+            <Briefcase size={24} />
+          </a>
+        </li>
+        <li>
+          <a
+            href="/projects"
+            class={`${pathname === "/projects" ? "text-link-active font-bold" : "hover:text-link-hover"} transition-colors p-2`}
+            aria-label="Projects"
+          >
+            <FolderKanban size={24} />
+          </a>
+        </li>
+        {/* Hiding the Contact Me list item */}
+        {
+          /* <li>
+        <a
+          href="/contact"
+          class={`${pathname === "/contact" ? "text-link-active font-bold" : "hover:text-link-hover"} transition-colors p-2`}
+          aria-label="Contact"
+        >
+          <Mail size={24} />
+        </a>
+        </li> */
+        }
+        <li>
+          <a
+            href="/find-me"
+            class={`${pathname === "/find-me" ? "text-link-active font-bold" : "hover:text-link-hover"} transition-colors p-2`}
+            aria-label="Find Me"
+          >
+            <Contact size={24} />
+          </a>
+        </li>
+      </ul>
+      <div class="justify-self-end">
+        <ThemeToggle />
+      </div>
+    </nav>
+  </div>
+</header>
