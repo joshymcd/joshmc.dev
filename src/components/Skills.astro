@@ -1,0 +1,186 @@
+---
+// Define skills data with names and proficiency levels (0-100)
+interface Skill {
+  name: string;
+  level: number;
+  category: string;
+}
+
+const skills: Skill[] = [
+  // Languages
+  { name: "C#/.NET", level: 95, category: "Languages" },
+  { name: "TypeScript", level: 90, category: "Languages" },
+  { name: "SQL", level: 90, category: "Languages" },
+  { name: "Go", level: 75, category: "Languages" },
+
+  // Technologies
+  { name: "Git", level: 90, category: "Technologies" },
+  { name: "Node.js", level: 85, category: "Technologies" },
+  { name: "React", level: 85, category: "Technologies" },
+  { name: "Angular", level: 80, category: "Technologies" },
+
+  // Cloud & DevOps
+  { name: "AWS", level: 90, category: "Cloud & DevOps" },
+  { name: "Terraform", level: 85, category: "Cloud & DevOps" },
+  { name: "CI/CD", level: 85, category: "Cloud & DevOps" },
+  { name: "Linux Admin", level: 75, category: "Cloud & DevOps" },
+
+  // Professional
+  { name: "Technical Leadership", level: 95, category: "Professional" },
+  { name: "Architecture Design", level: 90, category: "Professional" },
+  { name: "System Integration", level: 90, category: "Professional" },
+  { name: "Solution Design", level: 90, category: "Professional" },
+  { name: "Mentoring & Training", level: 85, category: "Professional" },
+];
+
+// Function to get color based on skill level - desaturated colors (darker to lighter)
+const getSkillColor = (level: number) => {
+  if (level >= 90) return "bg-gradient-to-r from-slate-700 to-slate-600"; // Excellent - Darkest to lighter
+  if (level >= 80) return "bg-gradient-to-r from-slate-600 to-slate-500"; // Very Good - Dark to lighter
+  if (level >= 70) return "bg-gradient-to-r from-slate-500 to-slate-400"; // Good - Medium to lighter
+  return "bg-gradient-to-r from-slate-400 to-slate-300"; // Basic - Light to lightest
+};
+
+// Group skills by category
+const groupedSkills = skills.reduce(
+  (acc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill);
+    return acc;
+  },
+  {} as Record<string, Skill[]>
+);
+
+// Get category names for tabs
+const categories = [
+  "Professional",
+  "Languages",
+  "Technologies",
+  "Cloud & DevOps",
+];
+---
+
+<div
+  id="skills-component"
+  class="w-full max-w-4xl mx-auto flex-1 flex flex-col"
+>
+  {/* Skills Container with Flex Layout */}
+  <div class="rounded-lg overflow-hidden flex flex-col flex-1">
+    {/* Content Area - Flex 1 to fill space */}
+    <div class="flex-1 p-6 overflow-y-auto">
+      {
+        categories.map((category) => (
+          <div
+            class={`skills-tab-content ${category === categories[0] ? "" : "hidden"}`}
+            data-tab={category}
+          >
+            <div class="space-y-4">
+              {groupedSkills[category].map((skill, index) => (
+                <div
+                  class="flex flex-col sm:flex-row sm:items-center sm:justify-between animate-[slideInUp_0.6s_ease-out_forwards] opacity-0"
+                  style={`animation-delay: ${index * 0.1 + 0.1}s`}
+                >
+                  <div class="sm:w-48 sm:flex-shrink-0 mb-1 sm:mb-0">
+                    <span class="text-sm font-medium text-text-base">
+                      {skill.name}
+                    </span>
+                  </div>
+                  <div class="w-full sm:flex-1 sm:mx-4">
+                    <div class="w-full bg-bg-muted rounded-full h-2 overflow-hidden">
+                      <div
+                        class={`h-full ${getSkillColor(skill.level)} rounded-full animate-[fillBar_2s_ease-out_forwards]`}
+                        style={`width: 0%; --target-width: ${skill.level}%; animation-delay: ${index * 0.2 + 0.3}s`}
+                      />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    {/* Tab Navigation at Bottom */}
+    <div class="border-t border-border-subtle">
+      <div class="flex flex-wrap justify-center gap-2 p-4">
+        {
+          categories.map((category, index) => (
+            <button
+              class={`skill-tab px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
+                index === 0
+                  ? "bg-primary text-text-inverted shadow-sm"
+                  : "text-text-subtle hover:text-text-base hover:bg-bg-base"
+              }`}
+              data-tab={category}
+            >
+              {category}
+            </button>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initSkillsTabs() {
+    const tabs = document.querySelectorAll(".skill-tab");
+    const contents = document.querySelectorAll(".skills-tab-content");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const targetTab = tab.getAttribute("data-tab");
+
+        // Update active tab styling
+        tabs.forEach((t) => {
+          if (t === tab) {
+            t.className =
+              "skill-tab px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 bg-primary text-text-inverted shadow-sm";
+          } else {
+            t.className =
+              "skill-tab px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 text-text-subtle hover:text-text-base hover:bg-bg-base";
+          }
+        });
+
+        // Show/hide content
+        contents.forEach((content) => {
+          if (content.getAttribute("data-tab") === targetTab) {
+            content.classList.remove("hidden");
+            // Restart animations for newly visible content
+            const animatedElements = content.querySelectorAll(
+              ".animate-\\[slideInUp_0\\.6s_ease-out_forwards\\]"
+            );
+            animatedElements.forEach((el, index) => {
+              const htmlEl = el as HTMLElement;
+              htmlEl.style.animation = "none";
+              htmlEl.offsetHeight; // Trigger reflow
+              htmlEl.style.animation = `slideInUp 0.6s ease-out forwards`;
+              htmlEl.style.animationDelay = `${index * 0.1 + 0.1}s`;
+            });
+            const progressBars = content.querySelectorAll(
+              ".animate-\\[fillBar_2s_ease-out_forwards\\]"
+            );
+            progressBars.forEach((bar, index) => {
+              const htmlBar = bar as HTMLElement;
+              htmlBar.style.animation = "none";
+              htmlBar.offsetHeight; // Trigger reflow
+              htmlBar.style.animation = `fillBar 2s ease-out forwards`;
+              htmlBar.style.animationDelay = `${index * 0.2 + 0.3}s`;
+            });
+          } else {
+            content.classList.add("hidden");
+          }
+        });
+      });
+    });
+  }
+
+  // Initialize on page load
+  initSkillsTabs();
+
+  // Re-initialize after view transitions
+  document.addEventListener("astro:after-swap", initSkillsTabs);
+</script>
