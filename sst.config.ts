@@ -4,9 +4,15 @@ export default $config({
   app(input) {
     return {
       name: "joshmcdev",
-      removal: input?.stage === "production" ? "retain" : "remove",
-      protect: ["production"].includes(input?.stage),
+      removal: input?.stage === "production" ? "remove" : "remove",
+      protect: false,
       home: "aws",
+      providers: {
+        aws: {
+          region: "eu-west-2",
+        },
+      },
+      region: "eu-west-2",
     };
   },
   async run() {
@@ -19,13 +25,17 @@ export default $config({
       domain: domain,
     });
   },
-console: {
+  console: {
     autodeploy: {
       target(event) {
-        if (event.type === "branch" && event.branch === "main" && event.action === "pushed") {
+        if (
+          event.type === "branch" &&
+          event.branch === "main" &&
+          event.action === "pushed"
+        ) {
           return { stage: "production" };
         }
-      }
-    }
-  }
+      },
+    },
+  },
 });
