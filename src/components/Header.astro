@@ -6,6 +6,7 @@ import Briefcase from "@lucide/astro/icons/briefcase";
 import FolderKanban from "@lucide/astro/icons/folder-kanban";
 import Mail from "@lucide/astro/icons/mail";
 import Contact from "@lucide/astro/icons/contact";
+import Award from "@lucide/astro/icons/award";
 
 const pathname = Astro.url.pathname;
 // Remove color variables for now
@@ -64,6 +65,15 @@ const pathname = Astro.url.pathname;
             <FolderKanban size={24} />
           </a>
         </li>
+        {/* <li>
+          <a
+            href="/skills"
+            class={`${pathname === "/skills" ? "text-link-active font-bold" : "hover:text-link-hover"} transition-colors p-2`}
+            aria-label="Skills"
+          >
+            <Award size={24} />
+          </a>
+        </li> */}
         {/* Hiding the Contact Me list item */}
         {
           /* <li>

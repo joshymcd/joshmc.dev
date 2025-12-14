@@ -9,16 +9,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.1",
-    "@lucide/astro": "^0.515.0",
-    "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.9.3",
+    "@astrojs/sitemap": "^3.6.0",
+    "@lucide/astro": "^0.561.0",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.5",
     "astro-sst": "3.1.4",
-    "sst": "3.17.5",
-    "tailwindcss": "^4.1.10"
-  },
-  "engines": {
-    "node": ">=24.2.0"
-  },
-  "packageManager": "pnpm@10.11.1"
+    "sst": "3.17.25",
+    "tailwindcss": "^4.1.18"
+  } 
 }
