@@ -1,18 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import FolderKanban from "@lucide/astro/icons/folder-kanban";
-import HardHat from "@lucide/astro/icons/hard-hat";
 import PageTitle from "../components/PageTitle.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+const projects = [
+  {
+    title: "joshmc.dev",
+    description: "This website - a personal portfolio site built with Astro, Tailwind CSS, and TypeScript.",
+    technologies: ["Astro", "Tailwind CSS v4", "TypeScript", "Lucide Icons", "View Transitions"],
+    url: "https://github.com/joshymcd/joshmc.dev"
+  },
+  {
+    title: "Drink Deck",
+    description: "A home mini bar management system and recipe library web app for tracking spirits, cocktails, and ingredients.",
+    technologies: ["TanStack Start", "React", "TypeScript", "Tailwind CSS", "Drizzle ORM", "TanStack DB"],
+    url: "https://drinkdeck.io?utm_source=joshmc.dev&utm_medium=referral&utm_campaign=projects&utm_content=projects-card"
+  }
+];
 ---
 
 <Layout>
-  <div class="flex flex-col flex-1 items-center gap-y-8">
+  <div class="flex flex-col flex-1 items-center gap-y-8 w-full max-w-4xl mx-auto">
     <PageTitle title="Projects" icon={FolderKanban} />
-    <div
-      class="flex-1 flex flex-col items-center justify-center text-text-muted w-full"
-    >
-      <HardHat size={48} class="mb-4" />
-      <p class="text-xl">Under Construction</p>
+    <div class="flex-1 overflow-y-auto w-full px-4 space-y-4">
+      {projects.map((project) => (
+        <ProjectCard {...project} />
+      ))}
     </div>
   </div>
 </Layout>
