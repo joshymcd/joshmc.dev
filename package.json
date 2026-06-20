@@ -9,12 +9,12 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.7.0",
-    "@lucide/astro": "^0.561.0",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.10",
+    "@astrojs/sitemap": "^3.7.3",
+    "@lucide/astro": "^1.21.0",
+    "@tailwindcss/vite": "^4.3.1",
+    "astro": "^5.18.2",
     "astro-sst": "3.1.4",
-    "sst": "3.17.25",
-    "tailwindcss": "^4.1.18"
+    "sst": "4.15.2",
+    "tailwindcss": "^4.3.1"
   }
 }

@@ -1,21 +1,21 @@
 ---
-import { Github, Linkedin, Twitter } from "@lucide/astro/icons"; // Changed X to Twitter
+import SocialIcon from "./SocialIcon.astro";
 
 const socialLinks = [
   {
     href: "https://github.com/joshymcd", // Replace with your GitHub URL
     label: "GitHub",
-    icon: Github,
+    icon: "github",
   },
   {
     href: "https://linkedin.com/in/joshmcdonald92", // Replace with your LinkedIn URL
     label: "LinkedIn",
-    icon: Linkedin,
+    icon: "linkedin",
   },
   {
     href: "https://x.com/joshymcd92", // Replace with your X/Twitter URL
     label: "Twitter", // Changed label
-    icon: Twitter, // Changed icon from X to Twitter
+    icon: "twitter",
   },
 ];
 
@@ -36,7 +36,8 @@ const pathname = Astro.url.pathname;
                 aria-label={link.label}
                 class="transition-colors hover:text-link-hover"
               >
-                <link.icon
+                <SocialIcon
+                  name={link.icon}
                   size={24}
                   transition:name={`social-${link.label.toLowerCase()}`}
                 />
