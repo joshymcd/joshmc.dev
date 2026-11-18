@@ -1,0 +1,540 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PageTitle from "../components/PageTitle.astro";
+import StackedBars from "../components/StackedBars.astro";
+import ChartColumn from "@lucide/astro/icons/chart-column";
+import improvements from "../data/improvements.json";
+import savings from "../data/savings.json";
+
+const SNAPSHOT = "18 November 2026";
+const PRODUCTS = ["YourKeys", "SalesSeek", "Jupix", "Alto"];
+const CATEGORIES = [
+  "security",
+  "maintainability",
+  "stability",
+  "supportedness",
+  "observability",
+  "dr",
+  "compliance",
+  "other",
+];
+const CATEGORY_NAMES: Record<string, string> = { dr: "disaster recovery" };
+
+const fmt = (n: number) => n.toLocaleString("en-GB");
+const count = (rows: typeof improvements, status: string) =>
+  rows.filter((r) => r.status === status).length;
+
+// Improvements
+const impCounts = {
+  done: count(improvements, "done"),
+  inProgress: count(improvements, "in progress"),
+  planned: count(improvements, "planned"),
+};
+
+const byProduct = PRODUCTS.map((product) => {
+  const rows = improvements.filter((r) => r.product === product);
+  const done = count(rows, "done");
+  const in_progress = count(rows, "in progress");
+  const planned = count(rows, "planned");
+  return { product, done, in_progress, planned, total: done + in_progress + planned };
+});
+
+const byCategory = CATEGORIES.map((category) => {
+  const rows = improvements.filter((r) => r.categories.includes(category));
+  return {
+    category: CATEGORY_NAMES[category] ?? category,
+    done: count(rows, "done"),
+    in_progress: count(rows, "in progress"),
+    planned: count(rows, "planned"),
+  };
+});
+
+const byImpact = ["high", "medium", "low"].map((impact) => ({
+  impact,
+  count: improvements.filter((r) => r.impact === impact).length,
+}));
+
+// Savings (USD per year)
+const sumBucket = (rows: typeof savings, bucket: string) =>
+  rows
+    .filter((r) => r.bucket === bucket)
+    .reduce((sum, r) => sum + (r.annual_usd ?? 0), 0);
+
+const savTotals = {
+  realised: sumBucket(savings, "realised"),
+  inProgress: sumBucket(savings, "in progress"),
+  pipeline: sumBucket(savings, "pipeline"),
+  avoidance: sumBucket(savings, "avoidance"),
+};
+
+const savByProduct = PRODUCTS.map((product) => {
+  const rows = savings.filter((r) => r.product === product);
+  return {
+    product,
+    realised: sumBucket(rows, "realised"),
+    in_progress: sumBucket(rows, "in progress"),
+    pipeline: sumBucket(rows, "pipeline"),
+  };
+});
+
+const findImprovement = (item: string) =>
+  improvements.find((r) => r.item === item);
+
+const keyProjects = [
+  {
+    title: "Jupix: two-factor authentication on Laravel Fortify",
+    row: findImprovement(
+      "TOTP two-factor authentication on Laravel Fortify (login app)"
+    ),
+    when: "Jul to Nov 2026",
+    summary:
+      "I designed and built the move of Jupix sign-in from a bespoke legacy path onto Laravel Fortify, as a strangler sequence of small, independently releasable stages, with TOTP two-factor authentication built on top. All development was mine.",
+    points: [
+      "Started as an RFC with two alternatives (native TOTP, Auth0) compared on effort, risk and cost.",
+      "Characterisation tests written first, so each stage shipped alone against the legacy behaviour.",
+      "The Fortify stages are live; the two-factor stages are in review.",
+    ],
+  },
+  {
+    title: "Jupix: Docker-based local development environment",
+    row: findImprovement(
+      "Docker-based local development environment (jupix-platform)"
+    ),
+    when: "Jul to Nov 2026",
+    summary:
+      "Jupix developers worked on a VirtualBox box built from old VM images that drifted from production. I built jupix-platform: one repo that runs any Jupix app locally from the same Docker image the AWS deployment uses, with its databases, queues, mail and PDF rendering as containers. All development was mine.",
+    points: [
+      "Pre-seeded test database image, every app service onboarded, Playwright and editor tasks included.",
+      "Written as an onboarding guide, so a new starter reaches the login screen in minutes.",
+      "Other engineers now contribute to it; it is the day-to-day environment for the team.",
+    ],
+  },
+  {
+    title: "Alto: AltoBot, the internal Slack AI assistant",
+    row: findImprovement(
+      "AltoBot: internal Slack AI assistant"
+    ),
+    when: "Apr to Nov 2026",
+    summary:
+      "AltoBot answers engineers and support staff in Slack, searches Jira, GitHub and the help centre, triages alerts and can file tickets. I created and maintain it, including the v2 rebuild: one main agent with sub-agents, streamed replies, a judged caveat on every answer, and approval buttons before any write to Jira.",
+    points: [
+      "Built so an AI agent acts with safeguards: human sign-off before writes, feedback on every reply, per-user stage routing.",
+      "Runs as a TypeScript SST app on AWS; production and dev stages both monitored in Datadog.",
+      "v2.0.0 released 13 October 2026; v2.1.0 in review.",
+    ],
+  },
+];
+
+const themes = [
+  {
+    title: "Live systems moved in stages",
+    text: "Old and new ran side by side for real customers: Bitbucket to GitHub across 169 repos, Jupix sign-in onto Laravel Fortify through a strangler sequence, web tracking from MongoDB to Postgres while in use.",
+  },
+  {
+    title: "Technical debt displaced safely",
+    text: "Terraform brought back to match live before changing it, configuration lifted out of files on servers into a typed shared library, the Jupix developer environment rebuilt on Docker, long-lived environments and dead infrastructure retired.",
+  },
+  {
+    title: "Written decisions, reviewed",
+    text: "Every significant change starts as an RFC in a shared repository, with alternatives compared and status kept current, so other teams can follow the same path.",
+  },
+  {
+    title: "A tested way back",
+    text: "Production backups are restored and verified every day, releases promote through staging on pull requests, and each migration stage can be paused or rolled back on its own.",
+  },
+];
+
+const STATUS_SERIES = [
+  { key: "done", label: "Done", color: "bg-emerald-600 dark:bg-emerald-500" },
+  { key: "in_progress", label: "In progress", color: "bg-amber-500 dark:bg-amber-400" },
+  { key: "planned", label: "Planned", color: "bg-stone-400 dark:bg-slate-600" },
+];
+const SAVINGS_SERIES = [
+  { key: "realised", label: "Realised", color: "bg-emerald-600 dark:bg-emerald-500" },
+  { key: "in_progress", label: "In progress", color: "bg-amber-500 dark:bg-amber-400" },
+  { key: "pipeline", label: "Pipeline (estimate)", color: "bg-stone-400 dark:bg-slate-600" },
+];
+const IMPACT_SERIES = [
+  { key: "count", label: "Improvements", color: "bg-primary" },
+];
+
+const pillBase =
+  "inline-block whitespace-nowrap rounded-full border px-2 py-0.5 text-xs";
+const statusPill = (status: string) => {
+  if (status === "done")
+    return `${pillBase} border-emerald-600 bg-emerald-600/15 dark:border-emerald-500`;
+  if (status === "in progress")
+    return `${pillBase} border-amber-500 bg-amber-500/15`;
+  return `${pillBase} border-border text-text-subtle`;
+};
+const impactPill = (impact: string) => {
+  if (impact === "high") return `${pillBase} border-red-500`;
+  if (impact === "medium") return `${pillBase} border-amber-500`;
+  return `${pillBase} border-border text-text-subtle`;
+};
+
+const card = "border border-border bg-bg-muted rounded-lg p-6 min-w-0";
+const sectionTitle = "text-xl font-semibold mb-4";
+const th = "px-3 py-2 text-left font-medium text-text-subtle whitespace-nowrap";
+const td = "px-3 py-2 align-top border-t border-border-subtle";
+const tdNum = `${td} text-right tabular-nums whitespace-nowrap`;
+---
+
+<Layout>
+  <div class="flex flex-col flex-1 gap-y-10 w-full max-w-6xl mx-auto px-4 pb-10">
+    <PageTitle
+      title="Engineering Improvements"
+      icon={ChartColumn}
+      subtitle="YourKeys, SalesSeek, Jupix and Alto, calendar year 2026"
+    />
+
+    <p class="max-w-3xl mx-auto text-center text-text-muted leading-relaxed">
+      So far this year <b class="text-text-base">{impCounts.done}</b> system-wide
+      improvements are delivered, <b class="text-text-base">{impCounts.inProgress}</b>
+      are in progress and <b class="text-text-base">{impCounts.planned}</b> are planned.
+      On the money side, <b class="text-text-base">{fmt(savTotals.realised)}</b> USD a
+      year is already realised, <b class="text-text-base">{fmt(savTotals.inProgress)}</b>
+      is in progress, and a further <b class="text-text-base">{fmt(savTotals.pipeline)}</b>
+      is the estimated planned pipeline, not yet counted. Snapshot taken {SNAPSHOT}.
+    </p>
+
+    <section class="grid gap-8 lg:grid-cols-2">
+      <div>
+        <h2 class={sectionTitle}>Significant system improvements</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <div class={`${card} border-t-4 border-t-emerald-600`}>
+            <div class="text-xs uppercase tracking-wide text-text-subtle">Delivered</div>
+            <div class="text-4xl font-bold tabular-nums py-1">{impCounts.done}</div>
+            <div class="text-xs text-text-subtle">Live in production</div>
+          </div>
+          <div class={`${card} border-t-4 border-t-amber-500`}>
+            <div class="text-xs uppercase tracking-wide text-text-subtle">In progress</div>
+            <div class="text-4xl font-bold tabular-nums py-1">{impCounts.inProgress}</div>
+            <div class="text-xs text-text-subtle">Built, in review or rolling out</div>
+          </div>
+          <div class={`${card} border-t-4`}>
+            <div class="text-xs uppercase tracking-wide text-text-subtle">Planned</div>
+            <div class="text-4xl font-bold tabular-nums py-1">{impCounts.planned}</div>
+            <div class="text-xs text-text-subtle">Agreed or proposed in an RFC</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2 class={sectionTitle}>Cost savings, USD per year</h2>
+        <div class="grid grid-cols-3 gap-4">
+          <div class={`${card} border-t-4 border-t-emerald-600`}>
+            <div class="text-xs uppercase tracking-wide text-text-subtle">Realised</div>
+            <div class="text-2xl sm:text-4xl font-bold tabular-nums py-1">{fmt(savTotals.realised)}</div>
+            <div class="text-xs text-text-subtle">Seen on bills or vendor plans</div>
+          </div>
+          <div class={`${card} border-t-4 border-t-amber-500`}>
+            <div class="text-xs uppercase tracking-wide text-text-subtle">In progress</div>
+            <div class="text-2xl sm:text-4xl font-bold tabular-nums py-1">{fmt(savTotals.inProgress)}</div>
+            <div class="text-xs text-text-subtle">Decommissions under way</div>
+          </div>
+          <div class={`${card} border-t-4`}>
+            <div class="text-xs uppercase tracking-wide text-text-subtle">Pipeline</div>
+            <div class="text-2xl sm:text-4xl font-bold tabular-nums py-1">{fmt(savTotals.pipeline)}</div>
+            <div class="text-xs text-text-subtle">Estimate, not counted yet</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class={sectionTitle}>How the work was done</h2>
+      <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        {
+          themes.map((theme) => (
+            <div class="border-t border-border pt-3">
+              <h3 class="font-semibold mb-1">{theme.title}</h3>
+              <p class="text-sm text-text-muted leading-relaxed">{theme.text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2 class={sectionTitle}>Key projects led end to end</h2>
+      <div class="grid gap-6 lg:grid-cols-3">
+        {
+          keyProjects.map((project) => (
+            <div class={card}>
+              <h3 class="text-lg font-semibold mb-2">{project.title}</h3>
+              <div class="flex flex-wrap items-center gap-2 text-xs text-text-subtle mb-3">
+                {project.row && (
+                  <>
+                    <span class={statusPill(project.row.status)}>{project.row.status}</span>
+                    <span class={impactPill(project.row.impact)}>{project.row.impact} impact</span>
+                  </>
+                )}
+                <span>{project.when}</span>
+              </div>
+              <p class="text-sm text-text-muted leading-relaxed mb-3">{project.summary}</p>
+              <ul class="list-disc pl-5 text-sm text-text-subtle space-y-1">
+                {project.points.map((point) => <li>{point}</li>)}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section>
+      <h2 class={sectionTitle}>Improvements at a glance</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class={card}>
+          <h3 class="font-semibold mb-1">By product and status</h3>
+          <p class="text-xs text-text-subtle mb-4">One row per improvement. Alto is a secondary focus.</p>
+          <StackedBars
+            rows={byProduct}
+            labelKey="product"
+            series={STATUS_SERIES}
+            ariaLabel="Improvements per product, stacked by status"
+          />
+        </div>
+        <div class={card}>
+          <h3 class="font-semibold mb-1">By category</h3>
+          <p class="text-xs text-text-subtle mb-4">An improvement counts once under each category it lists.</p>
+          <StackedBars
+            rows={byCategory}
+            labelKey="category"
+            series={STATUS_SERIES}
+            ariaLabel="Improvements per category, stacked by status"
+          />
+        </div>
+        <div class={card}>
+          <h3 class="font-semibold mb-1">By impact, all statuses</h3>
+          <p class="text-xs text-text-subtle mb-4">
+            High removes a risk of major outage, data loss or breach; medium reduces a
+            known risk for one product; low is hygiene. Ratings are provisional.
+          </p>
+          <StackedBars
+            rows={byImpact}
+            labelKey="impact"
+            series={IMPACT_SERIES}
+            ariaLabel="Improvements by impact rating"
+          />
+        </div>
+        <div class={card}>
+          <h3 class="font-semibold mb-3">Product summary</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr>
+                  <th class={th}>Product</th>
+                  <th class={`${th} text-right`}>Done</th>
+                  <th class={`${th} text-right`}>In progress</th>
+                  <th class={`${th} text-right`}>Planned</th>
+                  <th class={`${th} text-right`}>Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  byProduct.map((r) => (
+                    <tr>
+                      <td class={td}>{r.product}</td>
+                      <td class={tdNum}>{r.done}</td>
+                      <td class={tdNum}>{r.in_progress}</td>
+                      <td class={tdNum}>{r.planned}</td>
+                      <td class={tdNum}>{r.total}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class={sectionTitle}>Cost savings by product</h2>
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class={card}>
+          <h3 class="font-semibold mb-1">USD per year</h3>
+          <p class="text-xs text-text-subtle mb-4">
+            Realised and in-progress figures are counted. The pipeline is estimated
+            from October 2026 AWS bills and list prices and is not counted until each
+            item is confirmed.
+          </p>
+          <StackedBars
+            rows={savByProduct}
+            labelKey="product"
+            series={SAVINGS_SERIES}
+            ariaLabel="Annual USD savings per product: realised, in progress and estimated pipeline"
+          />
+        </div>
+        <div class={card}>
+          <h3 class="font-semibold mb-3">Savings summary</h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm">
+              <thead>
+                <tr>
+                  <th class={th}>Product</th>
+                  <th class={`${th} text-right`}>Realised</th>
+                  <th class={`${th} text-right`}>In progress</th>
+                  <th class={`${th} text-right`}>Pipeline (est.)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  savByProduct.map((r) => (
+                    <tr>
+                      <td class={td}>{r.product}</td>
+                      <td class={tdNum}>{fmt(r.realised)}</td>
+                      <td class={tdNum}>{fmt(r.in_progress)}</td>
+                      <td class={tdNum}>{fmt(r.pipeline)}</td>
+                    </tr>
+                  ))
+                }
+              </tbody>
+            </table>
+          </div>
+          <p class="text-xs text-text-subtle mt-4">
+            Not in any figure: Kubernetes extended support avoidance of
+            {fmt(savTotals.avoidance)} USD a year if the production cluster is upgraded
+            in time, and one logging vendor whose cost is still to be found.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class={sectionTitle}>Improvements in detail</h2>
+      <div class="flex flex-wrap items-center gap-3 mb-3 text-sm text-text-subtle">
+        <label for="filter-product">Product</label>
+        <select
+          id="filter-product"
+          data-improvement-filter="product"
+          class="rounded border border-border bg-bg-muted text-text-base px-2 py-1"
+        >
+          <option value="">All products</option>
+          {PRODUCTS.map((p) => <option value={p}>{p}</option>)}
+        </select>
+        <label for="filter-status">Status</label>
+        <select
+          id="filter-status"
+          data-improvement-filter="status"
+          class="rounded border border-border bg-bg-muted text-text-base px-2 py-1"
+        >
+          <option value="">All statuses</option>
+          <option value="done">Done</option>
+          <option value="in progress">In progress</option>
+          <option value="planned">Planned</option>
+        </select>
+        <span>
+          Showing <b class="text-text-base" data-improvement-count>{improvements.length}</b> rows
+        </span>
+      </div>
+      <div class={`${card} p-0 overflow-x-auto`}>
+        <table class="w-full text-sm">
+          <thead>
+            <tr>
+              <th class={th}>Product</th>
+              <th class={th}>Improvement</th>
+              <th class={th}>Categories</th>
+              <th class={th}>Status</th>
+              <th class={th}>Impact</th>
+              <th class={th}>When</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              improvements.map((r) => (
+                <tr data-improvement-row data-product={r.product} data-status={r.status}>
+                  <td class={td}>{r.product}</td>
+                  <td class={`${td} min-w-56`}>{r.item}</td>
+                  <td class={`${td} text-text-muted`}>{r.categories.join(", ")}</td>
+                  <td class={td}><span class={statusPill(r.status)}>{r.status}</span></td>
+                  <td class={td}><span class={impactPill(r.impact)}>{r.impact}</span></td>
+                  <td class={`${td} text-text-muted`}>{r.period}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2 class={sectionTitle}>Cost savings in detail</h2>
+      <div class={`${card} p-0 overflow-x-auto`}>
+        <table class="w-full text-sm">
+          <thead>
+            <tr>
+              <th class={th}>Product</th>
+              <th class={th}>Item</th>
+              <th class={th}>Status</th>
+              <th class={`${th} text-right`}>USD / year</th>
+              <th class={th}>When</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              savings.map((r) => (
+                <tr>
+                  <td class={td}>{r.product}</td>
+                  <td class={`${td} min-w-56`}>{r.item}</td>
+                  <td class={td}><span class={statusPill(r.status)}>{r.status}</span></td>
+                  <td class={tdNum}>{r.annual_usd == null ? "TBD" : fmt(r.annual_usd)}</td>
+                  <td class={`${td} text-text-muted`}>{r.period}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <details class="text-sm text-text-muted">
+      <summary class="cursor-pointer text-text-base font-medium">Definitions and basis</summary>
+      <dl class="grid grid-cols-[max-content_1fr] gap-x-4 gap-y-2 mt-3">
+        <dt class="font-medium text-text-base">Source</dt>
+        <dd>Static snapshot of my own improvement and cost-saving trackers, taken {SNAPSHOT}. This page does not update itself.</dd>
+        <dt class="font-medium text-text-base">Done</dt>
+        <dd>Realised and verifiable, usually by a merged pull request or a change seen on the AWS bill.</dd>
+        <dt class="font-medium text-text-base">In progress</dt>
+        <dd>Work started; pull requests open or a decommission under way.</dd>
+        <dt class="font-medium text-text-base">Planned</dt>
+        <dd>Agreed or proposed, including RFCs raised this year; nothing built yet.</dd>
+        <dt class="font-medium text-text-base">Savings basis</dt>
+        <dd>USD, annualised run-rate, approximate. Realised figures are drops seen on the AWS bill, vendor plan changes, or resources deleted and verified at their October 2026 run rate. Pipeline estimates use October 2026 billed cost with targets at list price, and are excluded from totals until confirmed.</dd>
+        <dt class="font-medium text-text-base">Impact</dt>
+        <dd>High, medium or low; provisional.</dd>
+      </dl>
+    </details>
+  </div>
+</Layout>
+
+<script>
+  // Re-run on every navigation: the site uses Astro view transitions.
+  document.addEventListener("astro:page-load", () => {
+    const filters = document.querySelectorAll<HTMLSelectElement>(
+      "[data-improvement-filter]"
+    );
+    if (!filters.length) return;
+    const rows = document.querySelectorAll<HTMLTableRowElement>(
+      "[data-improvement-row]"
+    );
+    const counter = document.querySelector("[data-improvement-count]");
+
+    const apply = () => {
+      const wanted: Record<string, string> = {};
+      filters.forEach((f) => (wanted[f.dataset.improvementFilter!] = f.value));
+      let shown = 0;
+      rows.forEach((row) => {
+        const match =
+          (!wanted.product || row.dataset.product === wanted.product) &&
+          (!wanted.status || row.dataset.status === wanted.status);
+        row.hidden = !match;
+        if (match) shown++;
+      });
+      if (counter) counter.textContent = String(shown);
+    };
+
+    filters.forEach((f) => f.addEventListener("change", apply));
+    apply();
+  });
+</script>

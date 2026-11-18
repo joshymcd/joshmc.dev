@@ -1,0 +1,550 @@
+[
+  {
+    "product": "YourKeys",
+    "item": "Lambda runtimes moved to nodejs22.x",
+    "categories": [
+      "security",
+      "supportedness"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "28 Oct 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Shared security scanning workflow rolled out across repos",
+    "categories": [
+      "security"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "Jan to Nov 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "First Linux production container image",
+    "categories": [
+      "maintainability",
+      "supportedness"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "1 Sep 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "RFC process established",
+    "categories": [
+      "maintainability",
+      "other"
+    ],
+    "status": "done",
+    "impact": "low",
+    "period": "Jul to Sep 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Stripe payment state recovery",
+    "categories": [
+      "stability"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "Sep to Oct 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Test and proof-of-concept leftovers removed",
+    "categories": [
+      "security",
+      "maintainability"
+    ],
+    "status": "done",
+    "impact": "low",
+    "period": "17 Nov 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Configuration moved to a typed shared library backed by a managed parameter store",
+    "categories": [
+      "security",
+      "maintainability",
+      "stability"
+    ],
+    "status": "in progress",
+    "impact": "high",
+    "period": "Jul 2026 onwards"
+  },
+  {
+    "product": "YourKeys",
+    "item": "AWS clients moved to dependency injection on instance roles",
+    "categories": [
+      "security"
+    ],
+    "status": "in progress",
+    "impact": "medium",
+    "period": "Jul 2026 onwards"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Frontend framework upgrade",
+    "categories": [
+      "supportedness",
+      "security"
+    ],
+    "status": "in progress",
+    "impact": "high",
+    "period": "2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Playwright end-to-end test rebuild",
+    "categories": [
+      "stability"
+    ],
+    "status": "in progress",
+    "impact": "medium",
+    "period": "Mar to Oct 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Correlation IDs and distributed tracing",
+    "categories": [
+      "observability"
+    ],
+    "status": "in progress",
+    "impact": "medium",
+    "period": "2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Dependency bot cleanup and consolidation",
+    "categories": [
+      "maintainability"
+    ],
+    "status": "in progress",
+    "impact": "low",
+    "period": "Jul 2026 onwards"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Document database engine upgrade",
+    "categories": [
+      "supportedness",
+      "security"
+    ],
+    "status": "planned",
+    "impact": "high",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Remote access simplified onto audited session access",
+    "categories": [
+      "security",
+      "maintainability"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Remove develop and qa environments",
+    "categories": [
+      "maintainability",
+      "security"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Elastic Beanstalk on Windows to ECS on EC2 with Linux containers",
+    "categories": [
+      "maintainability",
+      "supportedness",
+      "stability"
+    ],
+    "status": "planned",
+    "impact": "high",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Retire a legacy file transfer endpoint (potential)",
+    "categories": [
+      "security"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Retired customer integration cleaned up",
+    "categories": [
+      "maintainability",
+      "security"
+    ],
+    "status": "planned",
+    "impact": "low",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Datadog log migration",
+    "categories": [
+      "observability"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Gitflow to GitHub Flow with ephemeral PR environments",
+    "categories": [
+      "maintainability",
+      "stability"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Docker-based local development environment",
+    "categories": [
+      "maintainability"
+    ],
+    "status": "planned",
+    "impact": "low",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Jenkins replaced by GitHub Actions",
+    "categories": [
+      "security",
+      "stability",
+      "supportedness"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "16 Sep 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Idle production server decommissioned",
+    "categories": [
+      "security"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "19 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Aurora backup restore-verification system",
+    "categories": [
+      "dr",
+      "stability"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "Sep to Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Bitbucket to GitHub migration (source of truth)",
+    "categories": [
+      "maintainability",
+      "security"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "Jul to Sep 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Web tracking moved from MongoDB to Postgres",
+    "categories": [
+      "stability",
+      "maintainability",
+      "supportedness"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "10 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Terraform brought back in line with live infrastructure",
+    "categories": [
+      "maintainability",
+      "stability"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "Oct to Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Release pipeline hardened (GitHub Actions)",
+    "categories": [
+      "stability",
+      "maintainability"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "16 to 22 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Security and quality scanning on master",
+    "categories": [
+      "security"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "Oct to Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Secrets and access hygiene in Terraform",
+    "categories": [
+      "security",
+      "maintainability"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "Oct to Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "ALB health checks point at app heartbeat endpoints",
+    "categories": [
+      "stability"
+    ],
+    "status": "done",
+    "impact": "medium",
+    "period": "11 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "CI guard against multiple Alembic heads",
+    "categories": [
+      "stability"
+    ],
+    "status": "done",
+    "impact": "low",
+    "period": "26 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "PDF generation structured logging and error reporting",
+    "categories": [
+      "observability"
+    ],
+    "status": "done",
+    "impact": "low",
+    "period": "9 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Ex-customer tenant configs removed from frontend",
+    "categories": [
+      "compliance",
+      "maintainability"
+    ],
+    "status": "done",
+    "impact": "low",
+    "period": "23 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Phased dependency upgrades (backend and frontend)",
+    "categories": [
+      "security",
+      "supportedness"
+    ],
+    "status": "in progress",
+    "impact": "medium",
+    "period": "Nov 2026 onwards"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Octopus Deploy retired; deploys direct from GitHub Actions",
+    "categories": [
+      "maintainability"
+    ],
+    "status": "in progress",
+    "impact": "low",
+    "period": "Oct 2026 onwards"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Unused staging environment shut down (one whole region)",
+    "categories": [
+      "security",
+      "maintainability",
+      "supportedness"
+    ],
+    "status": "in progress",
+    "impact": "medium",
+    "period": "Started 18 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Relational database engine upgrade",
+    "categories": [
+      "supportedness",
+      "security"
+    ],
+    "status": "planned",
+    "impact": "high",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Production Kubernetes control plane upgrade",
+    "categories": [
+      "supportedness",
+      "security"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Dec 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Kubernetes worker node image upgrade",
+    "categories": [
+      "supportedness",
+      "security"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Orphaned Kubernetes cluster decommissioned",
+    "categories": [
+      "security",
+      "maintainability"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Stopped legacy servers and unattached volumes removed",
+    "categories": [
+      "security",
+      "maintainability"
+    ],
+    "status": "planned",
+    "impact": "low",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "EKS to ECS / Fargate migration",
+    "categories": [
+      "maintainability",
+      "stability"
+    ],
+    "status": "planned",
+    "impact": "high",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Infrastructure as code modernised",
+    "categories": [
+      "maintainability"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Observability consolidation to Datadog",
+    "categories": [
+      "observability"
+    ],
+    "status": "planned",
+    "impact": "medium",
+    "period": "Not started"
+  },
+  {
+    "product": "Jupix",
+    "item": "Docker-based local development environment (jupix-platform)",
+    "categories": [
+      "maintainability",
+      "stability"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "Jul to Nov 2026"
+  },
+  {
+    "product": "Jupix",
+    "item": "PHP base image rebuilt and rolled out for a critical PHP vulnerability",
+    "categories": [
+      "security"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "21 Oct 2026"
+  },
+  {
+    "product": "Jupix",
+    "item": "TOTP two-factor authentication on Laravel Fortify (login app)",
+    "categories": [
+      "security"
+    ],
+    "status": "in progress",
+    "impact": "high",
+    "period": "Jul to Nov 2026"
+  },
+  {
+    "product": "Alto",
+    "item": "AltoBot: internal Slack AI assistant",
+    "categories": [
+      "other",
+      "observability"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "Apr to Nov 2026"
+  },
+  {
+    "product": "Alto",
+    "item": "ACS shared communications service and Email Sync (CAMS replacement)",
+    "categories": [
+      "stability",
+      "supportedness",
+      "maintainability"
+    ],
+    "status": "done",
+    "impact": "high",
+    "period": "GA 12 Nov 2026"
+  },
+  {
+    "product": "Alto",
+    "item": "Shared Alto side panel across domains",
+    "categories": [
+      "maintainability",
+      "other"
+    ],
+    "status": "in progress",
+    "impact": "medium",
+    "period": "Nov 2026"
+  }
+]

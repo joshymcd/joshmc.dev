@@ -1,0 +1,63 @@
+---
+// Horizontal stacked bars drawn with plain HTML, sized from the data at build time.
+export interface Series {
+  key: string;
+  label: string;
+  color: string; // Tailwind background classes
+}
+
+export interface Props {
+  rows: Record<string, string | number>[];
+  labelKey: string;
+  series: Series[];
+  ariaLabel: string;
+}
+
+const { rows, labelKey, series, ariaLabel } = Astro.props;
+const fmt = (n: number) => n.toLocaleString("en-GB");
+const totals = rows.map((r) =>
+  series.reduce((sum, s) => sum + (Number(r[s.key]) || 0), 0)
+);
+const max = Math.max(...totals, 1);
+---
+
+<div role="img" aria-label={ariaLabel} class="flex flex-col gap-2">
+  {
+    rows.map((row, i) => (
+      <div class="grid grid-cols-[7.5rem_1fr_auto] items-center gap-3 text-sm">
+        <span class="text-right text-text-muted truncate" title={String(row[labelKey])}>
+          {row[labelKey]}
+        </span>
+        <div class="flex h-5 rounded bg-bg-base border border-border-subtle overflow-hidden">
+          {series.map((s) => {
+            const value = Number(row[s.key]) || 0;
+            return (
+              value > 0 && (
+                <div
+                  class={s.color}
+                  style={`width: ${(value / max) * 100}%`}
+                  title={`${row[labelKey]}, ${s.label}: ${fmt(value)}`}
+                />
+              )
+            );
+          })}
+        </div>
+        <span class="tabular-nums text-text-subtle min-w-[3.5rem] text-right">
+          {fmt(totals[i])}
+        </span>
+      </div>
+    ))
+  }
+  {
+    series.length > 1 && (
+      <div class="flex flex-wrap gap-x-4 gap-y-1 pt-2 text-xs text-text-subtle">
+        {series.map((s) => (
+          <span class="inline-flex items-center gap-1.5">
+            <i class={`inline-block h-2.5 w-2.5 rounded-sm ${s.color}`} />
+            {s.label}
+          </span>
+        ))}
+      </div>
+    )
+  }
+</div>

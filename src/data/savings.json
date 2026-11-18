@@ -1,0 +1,202 @@
+[
+  {
+    "product": "YourKeys",
+    "item": "Office-hours scaler decommissioned",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 540,
+    "period": "17 Aug 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Secrets storage reduction",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 264,
+    "period": "Jun to Oct 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Test and proof-of-concept leftovers removed",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 2169,
+    "period": "17 Nov 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Old security-test environment leftovers removed",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 633,
+    "period": "17 Nov 2026"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Remove two long-lived lower environments",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 6578,
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Move Windows app servers to Linux containers",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 12382,
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Remove legacy VPN endpoints",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 14285,
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Document database extended support (engine upgrade)",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 3671,
+    "period": "Not started"
+  },
+  {
+    "product": "YourKeys",
+    "item": "Retire a legacy file transfer endpoint (potential)",
+    "status": "planned (potential)",
+    "bucket": "pipeline",
+    "annual_usd": 2679,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Application monitoring vendor decommissioned",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 2400,
+    "period": "28 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Deployment tool moved to the free tier",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 360,
+    "period": "9 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Retired customer file transfer server removed",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 2628,
+    "period": "11 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Idle production server decommissioned",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 769,
+    "period": "19 Oct 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Hosted database vendor decommissioned",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 15,
+    "period": "17 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "On-call alerting vendor decommissioned",
+    "status": "done",
+    "bucket": "realised",
+    "annual_usd": 2400,
+    "period": "11 to 18 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Unused staging environment shutdown: Kubernetes cluster",
+    "status": "in progress",
+    "bucket": "in progress",
+    "annual_usd": 8582,
+    "period": "Started 18 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Unused staging environment shutdown: databases, networking and the rest",
+    "status": "in progress",
+    "bucket": "in progress",
+    "annual_usd": 15143,
+    "period": "Started 18 Nov 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Orphaned Kubernetes cluster decommissioned",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 3994,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Relational database extended support (engine upgrade)",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 35381,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Kubernetes right-sizing: production",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 2144,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Kubernetes right-sizing: staging",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 1072,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Unattached legacy volumes",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 198,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Stopped legacy servers",
+    "status": "planned",
+    "bucket": "pipeline",
+    "annual_usd": 459,
+    "period": "Not started"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Kubernetes extended support (kept clusters)",
+    "status": "avoidance",
+    "bucket": "avoidance",
+    "annual_usd": 4380,
+    "period": "Dec 2026"
+  },
+  {
+    "product": "SalesSeek",
+    "item": "Logging vendor (under review)",
+    "status": "under consideration",
+    "bucket": "unquantified",
+    "annual_usd": null,
+    "period": "Not started"
+  }
+]
